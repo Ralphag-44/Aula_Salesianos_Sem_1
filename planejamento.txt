@@ -1,0 +1,118 @@
+		Advinhar número:
+
+Fazer o bagulho de advinhar falado
+
+mostar o console e "brincar de hacker"
+
+Mostrar tipagem 
+
+Variaveis prompt alert
+numero_inteiro = parseInt(prompt());
+numero_real = parseFloat(prompt());
+texto = prompt();
+
+Expressões (+,-,*,/,%, ==, >, <, <=, >=, !=, &&, ||)
+
+se um número é positivo ou negativo
+se um número é par ou impar
+se um número está dentro de um intervalo
+
+Maths
+abs, ceil, floor, trunc, sqrt, pow, random, 
+
+mostrar as raizes de uma equação de segundo grau (importante por causa da parentisação)
+(x-2)*(x-5)=x^2 -5x -2x +10 = x^2 -7x + 10 = 0
+distância entre dois pontos
+
+If 
+se uma divisão é inteira ou tem resto
+mostrar se uma equação de segundo grau tem 0, 1 ou 2 raizes reais
+ordenar o conteúdo de 3 variáveis a,b,c
+
+repetição (so while, inicialização, teste e atualização)
+loop infinito, i = 0; while i < 10; alert(i);
+
+
+1ª: escolher número aleatório
+2ª: o jogo com so o primeiro if
+3ª: fazer o jogo so com ifs
+4ª: jogo final
+
+		
+		
+		basquete										
+
+1ª: HTML, canvas, id e DOM
+	desafio: trocar cor da bola em hexa, fazer uma bola um quadrado e um triângulo (os 3 tem que aparecer).
+	
+2ª: interval e atualização do canvas e bola caindo sem aceleração infinitamente
+	desafios: loop sem limpar background arrumar, fazer cair mais rápido, fazer parar quando bater no fundo da tela
+
+3ª: simulação de física (movimento)
+bola_aceleracao_x = 0, bola_aceleracao_y = 2, bola_velocidade_x = bola_velocidade_x + bola_aceleracao_x, bola_velocidade_y = bola_velocidade_y + 
+bola_aceleracao_y, bola_centro_x = bola_centro_x + bola_velocidade_x, bola_centro_y = bola_centro_y + bola_velocidade_y
+
+explicar quando velocidade x é negativa, quando x é positiva, quando y é positiva e quando y é negativa.
+
+4: simulação de física (colisão)
+colisão com as paredes verticais, velocidade x *= -1
+colisão com as paredes horizontais, velocidade y *= -1
+
+	desafios: adicionar coeficiente de restituição (velocidade ? *= 0.8).
+
+5ª: colisão com aro
+sempre que bater no aro, subir a bola
+fazer a colisão com um "retangulozinho" se o centro da bola estiver dentro 
+	desafios: aumentar e diminuir tamanho do aro, rastro da bola, 
+	desafio CARALHÃO: escolher distância da tabela e marcar mais pontos quanto mais longe 
+	
+6ª: jogo completo (com distância aleatória (2, 3 e 5 pontos))
+
+		
+		
+		Space Invaders
+		
+1ª: imagens no canvas (nave)
+	desafios: trocar a nave
+	
+2ª: movimentação
+usar event.key por ser mais legível (e não ter o trabalho de explicar o keyCode).
+	desafios: trocar teclas, mover no y, fazer funcionar pra maiúsculos.
+
+3ª: limitação de tela x
+if(nave_x > 0) {...} else {if(nave_x < canvas.width}
+	desafios: ajeitar x+width, colisão y
+
+4ª: inimigo andando na tela
+inimigo1_x = inimigo1_x + inimigo1_velocidade_x
+	desafios: quicar na tela.
+	
+5ª: inimigo quicando na tela
+if(inimigo1_x > 0 || inimigo1_x < canvas.width) 
+{	inimigo1_velocidade_x = inimigo1_velocidade_x * -1; 
+}
+	
+6ª: tiro do player
+tiro que so pode ser reatirado quando estiver fora da tela no y, so alterando a posição dele.
+	desafios: tiro com física, fazer tiro circular.
+	
+7ª: vários inimigos.
+explicar que com inimigos_velocidade quando eles baterem na parede so precisa inverter a velocidade 1 vez 
+	desafios: descer os inimigos quando baterem na parede.
+
+8ª: tiro dos inimigos.
+Math.random com ifs que dependendo do número do Math.random vai sair de um inimigo dif
+	desafios: ajeitar direção do tiro (tiro originalmente vai ser uma cópia do tiro do player, então precisa inverter a velocidade y), 
+	excluir tiros que colidirem.
+	
+9ª: hud e vida
+adicionar sistema de vida para o player e desenhar a hud
+	desafios: ganhar 1 ponto por segundo 
+	
+10ª: animação
+ficar alterando imagens
+	desafios: aumentar a velocidade da animação
+
+11ª: PowerUp
+vida++, velocidade_nave ++, velocidade_tiro ++
+	desafios: fazer powerDown
