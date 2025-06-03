@@ -36,16 +36,17 @@
         inimigo_y = 150;
         inimigo_largura = 100;
         inimigo_altura = 100;
-
+        inimigo_velocidade = 10;
 
 
         function loop()
         {   context.fillStyle = "lightgray";
             context.fillRect(0, 0, canvas.width, canvas.height);
-            //*****************************************************************************
-            inimigo_x = inimigo_x + 10;
-            //*****************************************************************************
 
+            inimigo_x = inimigo_x + inimigo_velocidade;
+            if(inimigo_x <= 0 || inimigo_x >= canvas.width - inimigo_largura)
+            {   inimigo_velocidade = inimigo_velocidade * -1;
+            }
                            //imagem,  x,       y,      largura,     altura
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
             context.drawImage(inimigo, inimigo_x, inimigo_y, inimigo_largura, inimigo_altura);

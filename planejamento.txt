@@ -97,26 +97,29 @@ if(inimigo1_x > 0 || inimigo1_x < canvas.width)
 	
 7ª: tiro do player
 tiro que so pode ser reatirado quando estiver fora da tela no y, so alterando a posição dele.
-	desafios: tiro com física, fazer tiro circular.
+	desafios: tiro com física, fazer tiro aumentar de tamanho com o tempo.
 	
 8ª: vários inimigos.
 explicar que com inimigos_velocidade quando eles baterem na parede so precisa inverter a velocidade 1 vez 
 	desafios: descer os inimigos quando baterem na parede.
 
-9ª: tiro dos inimigos.
+9ª: Inimigos morrendo
+	colisao de arc
+
+10ª: tiro dos inimigos.
 Math.random com ifs que dependendo do número do Math.random vai sair de um inimigo diferente
 	desafios: ajeitar direção do tiro (tiro originalmente vai ser uma cópia do tiro do player, então precisa inverter a velocidade y), 
 	excluir tiros que colidirem.
 	
-10ª: hud e vida
+11ª: hud e vida
 adicionar sistema de vida para o player e desenhar a hud
 	desafios: ganhar 1 ponto por segundo 
 	
-11ª: animação
+12ª: animação
 ficar alterando imagens
 	desafios: aumentar a velocidade da animação
 
-12ª: PowerUp
+13ª: PowerUp
 vida++, velocidade_nave ++, velocidade_tiro ++
 	desafios: fazer powerDown
 
