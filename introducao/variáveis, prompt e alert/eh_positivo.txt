@@ -1,0 +1,3 @@
+numero = parseInt(prompt("Qual o número?"));
+eh_positivo = numero > 0;
+alert("o número: "+numero+" é positivo? " + eh_positivo);

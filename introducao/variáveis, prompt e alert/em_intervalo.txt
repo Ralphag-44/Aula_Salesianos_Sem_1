@@ -1,0 +1,5 @@
+numero = parseInt(prompt("Qual o número?"));
+inicio = parseInt(prompt("Qual o início do intervalo?"));
+fim = parseInt(prompt("Qual o fim do intervalo?"));
+em_intervalo = (numero >= inicio) && (numero <= fim);
+alert("O número: "+numero+" está no intervalo: "+inicio+"-"+fim+"? "+ em_intervalo);

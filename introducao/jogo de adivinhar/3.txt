@@ -1,0 +1,59 @@
+inicio = 0;
+fim = 100;
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+numero = Math.trunc((inicio+fim)/2);
+pergunta = prompt("maior que "+ numero +"?");
+if(pergunta == "s")
+{   inicio = numero + 1;
+}
+else
+{   fim = numero;
+}
+alert("O número é: "+inicio);

@@ -42,7 +42,7 @@ loop infinito, i = 0; while i < 10; alert(i);
 		
 		basquete										
 
-1ª: HTML, canvas, id e DOM
+1ª: HTML, canvas, id e DOMfire
 	desafio: trocar cor da bola em hexa, fazer uma bola um quadrado e um triângulo (os 3 tem que aparecer).
 	
 2ª: interval e atualização do canvas e bola caindo sem aceleração infinitamente
@@ -77,42 +77,59 @@ fazer a colisão com um "retangulozinho" se o centro da bola estiver dentro
 	
 2ª: movimentação
 usar event.key por ser mais legível (e não ter o trabalho de explicar o keyCode).
-	desafios: trocar teclas, mover no y, fazer funcionar pra maiúsculos.
+	desafios: mover no y.
 
 3ª: limitação de tela x
-if(nave_x > 0) {...} else {if(nave_x < canvas.width}
+if(nave_x > 0) {...} else {if(nave_x < canvas.width)}
 	desafios: ajeitar x+width, colisão y
 
-4ª: inimigo andando na tela
+4ª: desenhar inimigo na tela
+	desafios: fazer inimigo se movendo
+
+5ª: inimigo andando na tela
 inimigo1_x = inimigo1_x + inimigo1_velocidade_x
 	desafios: quicar na tela.
 	
-5ª: inimigo quicando na tela
+6ª: inimigo quicando na tela
 if(inimigo1_x > 0 || inimigo1_x < canvas.width) 
 {	inimigo1_velocidade_x = inimigo1_velocidade_x * -1; 
 }
 	
-6ª: tiro do player
+7ª: tiro do player
 tiro que so pode ser reatirado quando estiver fora da tela no y, so alterando a posição dele.
 	desafios: tiro com física, fazer tiro circular.
 	
-7ª: vários inimigos.
+8ª: vários inimigos.
 explicar que com inimigos_velocidade quando eles baterem na parede so precisa inverter a velocidade 1 vez 
 	desafios: descer os inimigos quando baterem na parede.
 
-8ª: tiro dos inimigos.
-Math.random com ifs que dependendo do número do Math.random vai sair de um inimigo dif
+9ª: tiro dos inimigos.
+Math.random com ifs que dependendo do número do Math.random vai sair de um inimigo diferente
 	desafios: ajeitar direção do tiro (tiro originalmente vai ser uma cópia do tiro do player, então precisa inverter a velocidade y), 
 	excluir tiros que colidirem.
 	
-9ª: hud e vida
+10ª: hud e vida
 adicionar sistema de vida para o player e desenhar a hud
 	desafios: ganhar 1 ponto por segundo 
 	
-10ª: animação
+11ª: animação
 ficar alterando imagens
 	desafios: aumentar a velocidade da animação
 
-11ª: PowerUp
+12ª: PowerUp
 vida++, velocidade_nave ++, velocidade_tiro ++
 	desafios: fazer powerDown
+
+
+
+
+Lembrete:
+colocar comentários em bloco de código exemplo:
+
+	// criação da nave com suas características
+	nave = new Image();
+	nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+	nave_x = 100;
+	nave_y = canvas.height-150;
+	nave_largura = 100;
+	nave_altura = 100;

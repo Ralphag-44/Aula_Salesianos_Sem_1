@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhar Nave</title>
+    <style>
+        * {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        canvas = document.getElementById("canvas");
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        context = canvas.getContext("2d");
+
+        nave = new Image();
+        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+
+        nave_x = 100;
+        nave_y = 100;
+        nave_largura = 100;
+        nave_altura = 100;
+
+        FPS = 30;
+        timer = setInterval(loop, 1000/FPS);
+
+        function loop()
+        {   context.fillStyle = "lightgray";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+                           //imagem,  x,       y,      largura,     altura
+            context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
+        };
+
+        
+    </script>
+</body>
+</html>
