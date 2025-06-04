@@ -66,6 +66,9 @@ nave_tiro_y = 0;
 nave_tiro_cor = "cyan";
 nave_tiro_velocidade = -20;
 nave_tiro_tamanho = 7;
+nave_vida = 3;
+
+pontos = 0;
 
 function loop()
 {   context.fillStyle = "lightgray";
@@ -80,6 +83,7 @@ function loop()
     if(inimigo1_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo1_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo1_vivo = false;
+            pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
         }
@@ -91,6 +95,7 @@ function loop()
     if(inimigo2_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo2_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo2_vivo = false;
+            pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
         }
@@ -102,6 +107,7 @@ function loop()
     if(inimigo3_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo3_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo3_vivo = false;
+            pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
 
@@ -114,6 +120,7 @@ function loop()
     if(inimigo4_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo4_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo4_vivo = false;
+            pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
         }
@@ -125,6 +132,7 @@ function loop()
     if(inimigo5_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo5_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo5_vivo = false;
+            pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
         }
@@ -134,14 +142,32 @@ function loop()
         context.drawImage(inimigos_imagem, inimigo5_x, inimigos_y, inimigos_largura, inimigos_altura);
     }
 
+    if(Math.hypot((inimigos_tiro_x - nave_tiro_x), (inimigos_tiro_y - nave_tiro_y)) < (inimigos_tiro_tamanho + nave_tiro_tamanho))
+    {   nave_tiro_y = 0;
+        inimigos_tiro_y = canvas.height;
+    }
+
+    if(Math.hypot((inimigos_tiro_x - (nave_x + nave_largura / 2)), (inimigos_tiro_y - (nave_y + nave_altura / 2))) < (nave_raio + inimigos_tiro_tamanho))
+    {   nave_vida = nave_vida - 1;
+        inimigos_tiro_y = canvas.height;
+    }
+
     if (inimigos_vivos == 0)
     {   alert("Parabéns!! Você ganhou o jogo!");
+        alert(Math.trunc(pontos));
         clearInterval(timer);
-        window.location.reload()
+        window.location.reload();
+    }
+
+    if(nave_vida == 0)
+    {   alert("Você perdeu o jogo!!");
+        clearInterval(timer);
+        window.location.reload();
     }
 
 
     context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
+
     if (nave_tiro_y > 0)
     {   nave_tiro_y = nave_tiro_y + nave_tiro_velocidade;
         context.fillStyle = nave_tiro_cor;
@@ -170,38 +196,62 @@ function loop()
                     atirou = true;
                 }
             }
-            if(inimigo_atirar == 1)
-            {   if(inimigo2_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
-                    atirou = true;
-                }
-            }
-            if(inimigo_atirar == 2)
-            {   if(inimigo3_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
-                    atirou = true;
-                }
-            }
-            if(inimigo_atirar == 3)
-            {   if(inimigo4_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
-                    atirou = true;
-                }
-            }
-            if(inimigo_atirar == 4)
-            {   if(inimigo5_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
-                    atirou = true;
+            else
+            {   atirou = false;
+                while(atirou == false)
+                {   inimigo_atirar = Math.trunc(Math.random()*5);
+                    if(inimigo_atirar == 0)
+                    {   if(inimigo1_vivo)
+                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                            inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
+                            atirou = true;
+                        }
+                    }
+                    if(inimigo_atirar == 1)
+                    {   if(inimigo2_vivo)
+                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                            inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
+                            atirou = true;
+                        }
+                    }
+                    if(inimigo_atirar == 2)
+                    {   if(inimigo3_vivo)
+                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                            inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
+                            atirou = true;
+                        }
+                    }
+                    if(inimigo_atirar == 3)
+                    {   if(inimigo4_vivo)
+                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                            inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
+                            atirou = true;
+                        }
+                    }
+                    if(inimigo_atirar == 4)
+                    {   if(inimigo5_vivo)
+                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                            inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
+                            atirou = true;
+                        }
+                    }
+
                 }
             }
 
         }
     }
+    
+    context.drawImage(nave, canvas.width-75 , 25, 75, 75)
+    context.fillStyle = "green";
+    context.font = "36px Arial";
+    context.fillText(nave_vida, canvas.width-100, 75);
 
+    context.drawImage(inimigos_imagem, 0, 25, 75, 75);
+    context.fillStyle = "purple";
+    context.fillText(Math.trunc(pontos), 80, 75)
+
+    pontos = pontos + 1/FPS;
 
 };
 
