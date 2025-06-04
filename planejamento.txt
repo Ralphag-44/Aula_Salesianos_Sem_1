@@ -104,22 +104,23 @@ explicar que com inimigos_velocidade quando eles baterem na parede so precisa in
 	desafios: descer os inimigos quando baterem na parede.
 
 9ª: Inimigos morrendo
-	colisao de arc
+colisao de distância entre dois pontos
 
 10ª: tiro dos inimigos.
 Math.random com ifs que dependendo do número do Math.random vai sair de um inimigo diferente
-	desafios: ajeitar direção do tiro (tiro originalmente vai ser uma cópia do tiro do player, então precisa inverter a velocidade y), 
-	excluir tiros que colidirem.
+	desafios: excluir tiros que colidirem.
 	
-11ª: hud e vida
-adicionar sistema de vida para o player e desenhar a hud
-	desafios: ganhar 1 ponto por segundo 
+11ª: vida e colisão
+adicionar sistema de vida e colisão para o player 
+
+12ª: hud
+	desafios: ganhar pontos por segundo
 	
-12ª: animação
+13ª: animação
 ficar alterando imagens
 	desafios: aumentar a velocidade da animação
 
-13ª: PowerUp
+14ª: PowerUp
 vida++, velocidade_nave ++, velocidade_tiro ++
 	desafios: fazer powerDown
 
@@ -136,3 +137,5 @@ colocar comentários em bloco de código exemplo:
 	nave_y = canvas.height-150;
 	nave_largura = 100;
 	nave_altura = 100;
+	
+antes da penultima aula, mostrar w3schools pra eles poderem consultar.
