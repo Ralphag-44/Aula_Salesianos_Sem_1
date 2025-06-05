@@ -69,11 +69,32 @@ nave_tiro_cor = "cyan";
 nave_tiro_velocidade = -20;
 nave_tiro_tamanho = 7;
 nave_vida = 3;
+nave_velocidade = 10;
 
 pontos = 0;
 
+
+powerUp_velocidade = 7;
+powerUp_raio = 37.5;
+
+powerUp = new Image();
+powerUp.src = "";
+powerUp_x = 0;
+powerUp_y = 0;
+powerUp_largura = 75;
+powerUp_altura = 75;
+
+powerUp1_quantidade = 10;
+powerUp2_quantidade = 3;
+powerUp3_quantidade = 5;
+
+powerUp_ativo = false;
+powerUp_tipo = 0;
+
+
+
 function loop()
-{   context.fillStyle = "lightgray";
+{   context.fillStyle = "black";
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     inimigo1_x = inimigo1_x + inimigos_velocidade;
@@ -155,7 +176,7 @@ function loop()
     }
 
     if (inimigos_vivos == 0)
-    {   alert("Parabéns!! Você ganhou o jogo!");
+    {   alert("Parabéns! Você ganhou o jogo!");
         alert(pontos);
         clearInterval(timer);
         window.location.reload();
@@ -166,7 +187,6 @@ function loop()
         clearInterval(timer);
         window.location.reload();
     }
-
 
     context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
 
@@ -243,6 +263,66 @@ function loop()
 
         }
     }
+
+    //*********************************************
+    if (powerUp_ativo == false) {
+        powerUp_y = -powerUp_altura;
+        powerUps_quantidade = (powerUp1_quantidade + powerUp2_quantidade + powerUp3_quantidade);
+        while (powerUp_ativo == false && (powerUps_quantidade > 0)) {
+            powerUp_tipo = Math.trunc(Math.random()*3)+1;
+            
+            if (powerUp_tipo == 1 && powerUp1_quantidade > 0) {
+                powerUp.src = "imgs/life.png";
+                powerUp_x = Math.random()*canvas.width;
+                powerUp_ativo = true;
+                powerUp1_quantidade = powerUp1_quantidade -1;
+            };
+            if (powerUp_tipo == 2 && powerUp2_quantidade > 0) {
+                powerUp.src = "imgs/speed.png";
+                powerUp_x = Math.random()*canvas.width;
+                powerUp_ativo = true;
+                powerUp2_quantidade = powerUp2_quantidade -1;
+            };
+            if (powerUp_tipo == 3 && powerUp3_quantidade > 0) {
+                powerUp.src = "imgs/municao.png";
+                powerUp_x = Math.random()*canvas.width;
+                powerUp_ativo = true;
+                powerUp3_quantidade = powerUp3_quantidade -1;
+            };
+        }
+    };
+
+    if(powerUp_ativo)
+    {   powerUp_y = powerUp_y + powerUp_velocidade;
+        if (powerUp_y > canvas.height) {
+            powerUp_ativo = false;
+            powerUp_tipo = 0;
+        }
+
+        if(!(powerUp_y > canvas.height)){
+            context.drawImage(powerUp, powerUp_x, powerUp_y, powerUp_largura, powerUp_altura);
+            
+            if (Math.hypot(((powerUp_x+powerUp_largura/2) - (nave_x + nave_largura / 2)), ((powerUp_y+powerUp_altura/2) - (nave_y + nave_altura / 2))) < (nave_raio + powerUp_raio))
+            {
+                if (powerUp_tipo == 1) {
+                    nave_vida = nave_vida + 1;
+                    powerUp_ativo = false;
+                };
+                if (powerUp_tipo == 2) {
+                    nave_velocidade = nave_velocidade + 10;
+                    powerUp_ativo = false;
+                };
+                if (powerUp_tipo == 3) {
+                    nave_tiro_tamanho = nave_tiro_tamanho + 2;
+                    nave_tiro_velocidade = nave_tiro_velocidade - 10;
+                    powerUp_ativo = false;
+                };
+            };
+        };
+    };
+    
+    //***********************************************
+
     if((Math.trunc(inimigos_animacao / 15) % 2) == 0)
     {   inimigos_imagem = inimigos_imagem1;
     }
@@ -259,7 +339,7 @@ function loop()
 
     context.drawImage(inimigos_imagem, 0, 25, 75, 75);
     context.fillStyle = "purple";
-    context.fillText(pontos, 80, 75)
+    context.fillText(pontos, 80, 75);
 
 
 };
@@ -268,12 +348,12 @@ function loop()
 document.addEventListener("keypress", function(event)
 {   if (event.key == "a")
     {   if(nave_x > 0)
-        {   nave_x = nave_x - 10;
+        {   nave_x = nave_x - nave_velocidade;
         };
     };
     if (event.key == "d")
     {   if(nave_x+nave_largura < canvas.width)
-        {   nave_x = nave_x + 10;
+        {   nave_x = nave_x + nave_velocidade;
         };
     };
     if(event.key == " ")
