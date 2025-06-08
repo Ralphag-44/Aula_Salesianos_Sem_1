@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo Arremesso</title>
+        <style>
+            *{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" ></canvas>
+        <script>
+            
+    canvas = document.getElementById("canvas")
+    context = canvas.getContext("2d")
+        
+    canvas.width = innerWidth
+    canvas.height = innerHeight
+
+context.beginPath();
+
+context.lineWidth = 5;
+
+context.moveTo(canvas.width * 0.85, canvas.height * 0.25);
+
+context.lineTo(canvas.width * 0.925, canvas.height * 0.5);
+
+context.lineTo(canvas.width * 0.775, canvas.height * 0.5);
+
+context.lineTo(canvas.width * 0.85, canvas.height * 0.25);
+
+context.stroke();
+
+    
+    
+    context.lineWidth = 5
+    context.strokeStyle = "#000000"
+    context.strokeRect(canvas.width/2 - canvas.height/1.5/2 , canvas.height/4, canvas.height/1.5, canvas.height/1.5)
+
+    context.fillStyle = "#000000";
+    context.beginPath();
+    context.arc(canvas.width/2, canvas.height/2, 200, 0, 2 * Math.PI);
+    context.fill();
+
+    context.fillStyle = "#FF0000";
+    context.font = "bold 40px Arial";
+    context.textAlign = "center";   
+    context.fillText("Canvas", canvas.width/2, canvas.height/5);
+    context.lineWidth = 5;
+    context.strokeStyle = "#000000";
+
+
+    context.strokeRect(canvas.width/2 - canvas.height/1.5/2, canvas.height/4, canvas.height/1.5, canvas.height/1.5);
+
+    context.beginPath();
+
+    context.moveTo(canvas.width/2 - canvas.height/1.5/2, canvas.height/4 + (canvas.height/1.5)/2);
+    context.lineTo(canvas.width/2 - canvas.height/1.5/2 + canvas.height/1.5, canvas.height/4 + canvas.height/1.5);
+
+    context.moveTo(canvas.width/2 - canvas.height/1.5/2 + canvas.height/1.5, canvas.height/4 + (canvas.height/1.5)/2);
+    context.lineTo(canvas.width/2 - canvas.height/1.5/2, canvas.height/4 + canvas.height/1.5);
+
+    context.stroke();
+
+
+
+    
+
+        </script>
+    </body>
+    </html>

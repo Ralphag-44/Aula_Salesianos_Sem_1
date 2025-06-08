@@ -1,0 +1,263 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo Arremesso</title>
+        <style>
+            *{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" ></canvas>
+        <script>
+            
+    canvas = document.getElementById("canvas")
+    context = canvas.getContext("2d")
+        
+    canvas.width = innerWidth
+    canvas.height = innerHeight
+
+    distancia_da_rede = prompt("Defina, de 1 a 10, a proximidade da qual o arremesso será realizado: (10 sendo o mais próximo, e 1 mais distante)")
+
+    if(distancia_da_rede < 1)
+    {
+        distancia_da_rede = 1
+    }
+
+    if(distancia_da_rede > 10)
+    {
+        distancia_da_rede = 10
+    }
+
+    distancia_da_rede = (canvas.width*0.9/10) * distancia_da_rede
+
+       if(distancia_da_rede <= canvas.width*0.17)
+    {
+        pontos_posicao = 5
+    }
+        else if(distancia_da_rede > canvas.width*0.17 && distancia_da_rede  < canvas.width * 0.52)
+    {
+        pontos_posicao = 3
+    }
+        else if(distancia_da_rede >= canvas.width*0.52)
+    {
+        pontos_posicao = 2
+    }
+
+    altura_arremesso = canvas.height*0.68
+
+    bola_x = distancia_da_rede
+    bola_y = altura_arremesso*0.95
+
+    atrito = 0.77
+    atrito_tabela = 0.256
+
+    bola_x_acelaracao = 0
+    bola_y_acelaracao = 2
+
+    bola_y_velocidade =  Number(prompt("Valor da Força Y (Para Cima):"))
+    bola_x_velocidade =  Number(prompt("Valor da Força X (Para Direita):"))
+
+    if(bola_y_velocidade < 5)
+    {
+            bola_y_velocidade = 5
+    }
+    else if(bola_y_velocidade > 60)
+    {
+            bola_y_velocidade = 60
+    }
+
+    if(bola_x_velocidade < 5)
+    {
+           bola_x_velocidade = 5
+    }
+    else if(bola_x_velocidade > 60)
+    {
+            bola_x_velocidade = 60
+    }
+    
+    bola_y_velocidade = bola_y_velocidade * -1 
+
+    bola_raio = 22
+    
+    bola_cor = "rgb(238,103,48)"
+
+    hitbox = false
+
+    pontos = 0
+
+        FPS = 30
+        timer = setInterval(loop, 1000/FPS)
+
+        function loop(){
+
+        context.fillStyle = "rgb(255, 255, 255)"
+        context.fillRect(0, 0, canvas.width, canvas.height)
+
+        context.fillStyle = "DarkBlue"
+        context.fillRect(0, canvas.height*0.85, canvas.width, canvas.height*0.15)
+
+        context.fillStyle = "brown"
+        context.fillRect(distancia_da_rede-bola_raio, canvas.height*0.7, 35, canvas.height*0.15)
+
+                context.font = "bold 45px 'Verdana'"; 
+        context.fillStyle = "black";              
+        context.textAlign = "center";            
+        context.textBaseline = "top";             
+        context.fillText("Pontos: " + pontos, canvas.width*0.1, 20); 
+
+
+    // Marcas da Quadra
+                context.strokeStyle = "white";
+                context.lineWidth = 5; 
+                context.font = "bold 30px 'Arial Black'"; 
+                context.fillStyle = "white"; 
+    
+                context.beginPath();
+    
+                // 5 Pontos
+                context.moveTo(canvas.width * 0.17, canvas.height * 0.85);
+                context.lineTo(canvas.width * 0.17, canvas.height);  
+                context.fillText("5 PTS", canvas.width * 0.14, canvas.height * 0.85 + 30);
+
+                // 3 Pontos
+                context.moveTo(canvas.width * 0.52, canvas.height * 0.85);
+                context.lineTo(canvas.width * 0.52, canvas.height);
+                context.fillText("3 PTS", canvas.width * 0.49, canvas.height * 0.85 + 30);
+
+                // 2 Pontos
+                context.moveTo(canvas.width * 0.9, canvas.height * 0.85);
+                context.lineTo(canvas.width * 0.9, canvas.height);
+                context.fillText("2 PTS", canvas.width * 0.87, canvas.height * 0.85 + 30);
+
+                context.stroke();
+
+                
+            //Desenho Bola
+            context.fillStyle = bola_cor;
+            context.beginPath();
+            context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
+            context.fill();
+                
+       // Aro
+            context.fillStyle = "black";
+            context.fillRect(canvas.width * 0.95125, canvas.height * 0.25, canvas.width * 0.05, canvas.height * 0.00625);
+
+            context.beginPath();
+            context.strokeStyle = "gray";
+            context.lineWidth = canvas.width * 0.0052;
+
+            context.moveTo(canvas.width * 0.95525, canvas.height * 0.256);
+            context.lineTo(canvas.width * 0.95525, canvas.height * 0.296);
+
+            context.moveTo(canvas.width * 0.96825, canvas.height * 0.256);
+            context.lineTo(canvas.width * 0.96825, canvas.height * 0.296);
+
+            context.moveTo(canvas.width * 0.98125, canvas.height * 0.256);
+            context.lineTo(canvas.width * 0.98125, canvas.height * 0.296);
+
+            context.moveTo(canvas.width * 0.99425, canvas.height * 0.256);
+            context.lineTo(canvas.width * 0.99425, canvas.height * 0.296);
+
+            context.stroke()    
+
+
+            if(hitbox == true)
+        {
+            context.fillStyle = "blue";
+            context.beginPath();
+            context.arc(canvas.width * 0.95425, canvas.height * 0.252, canvas.width*0.0025, 0, 2 * Math.PI);
+            context.fill();
+
+            context.fillStyle = "red";
+            context.beginPath();
+            context.arc(canvas.width * 0.97625, canvas.height * 0.25, canvas.width*0.005, 0, 2 * Math.PI);
+            context.fill();
+        }
+
+
+        bola_x = bola_x + bola_x_velocidade
+        bola_y = bola_y + bola_y_velocidade
+
+        bola_x_velocidade = bola_x_velocidade + bola_x_acelaracao
+        bola_y_velocidade = bola_y_velocidade + bola_y_acelaracao   
+
+    //Colisao Chão e Teto
+
+    if(bola_y >= canvas.height*0.845 - bola_raio)
+    {    
+        
+        bola_y = canvas.height*0.845 - bola_raio +5
+        bola_y_velocidade = bola_y_velocidade * atrito
+        bola_y_velocidade = bola_y_velocidade * -1
+
+    }
+    
+    else if(bola_y < bola_raio)
+    {
+        bola_y = bola_raio
+        bola_y_velocidade = bola_y_velocidade * atrito
+        bola_y_velocidade = bola_y_velocidade * -1
+    }
+
+
+        //Colisao Paredes
+
+    if(bola_x >= canvas.width - bola_raio)
+    {
+       
+
+    bola_x = canvas.width - bola_raio
+
+    //Tabela
+    if (bola_y+bola_raio >= canvas.height * 0.15 && bola_y-bola_raio <= canvas.height * 0.30){
+     
+        bola_y_velocidade = bola_y_velocidade * atrito
+        bola_y_velocidade = Math.abs(bola_y_velocidade)
+
+        bola_x_velocidade = bola_x_velocidade * -1
+        bola_x_velocidade = bola_x_velocidade * atrito_tabela
+    }
+
+    else 
+    {
+        bola_x_velocidade = bola_x_velocidade * atrito
+        bola_x_velocidade = bola_x_velocidade * -1
+    }   
+
+
+    }    
+
+    else if(bola_x <= bola_raio)
+    {
+        bola_x = bola_raio
+        bola_x_velocidade = bola_x_velocidade * atrito
+        bola_x_velocidade = bola_x_velocidade * -1
+    }
+    
+    if (Math.hypot(bola_x - (canvas.width * 0.95425), bola_y - canvas.height * 0.252) <= bola_raio + (canvas.width * 0.0025)) {
+        
+        bola_x_velocidade = bola_x_velocidade * atrito
+        bola_x_velocidade = bola_x_velocidade * -1
+        bola_y_velocidade = bola_y_velocidade * atrito
+        bola_y_velocidade = bola_y_velocidade * -1
+
+        
+        bola_x += bola_x_velocidade
+        bola_y += bola_y_velocidade
+    }
+
+
+    if (Math.hypot(canvas.width * 0.97625 - bola_x, canvas.height * 0.25 - bola_y) <= bola_raio + (canvas.width * 0.005)) {
+        pontos = pontos_posicao
+        bola_cor = "Gold"
+    }
+    }
+
+        </script>
+    </body>
+    </html>
