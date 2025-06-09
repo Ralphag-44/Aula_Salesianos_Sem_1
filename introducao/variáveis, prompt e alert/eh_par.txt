@@ -1,3 +1,0 @@
-numero = parseInt(prompt("Qual o número?"));
-eh_par = (numero % 2) == 0;
-alert("o número: "+numero+" é par? " + eh_par);
