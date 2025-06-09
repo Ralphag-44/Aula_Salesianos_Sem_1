@@ -1,0 +1,4 @@
+x1 = parseInt(prompt("qual o x do primeiro ponto?"));
+x2 = parseInt(prompt("qual o x do segundo ponto?"));
+distancia = Math.abs(x2 - x1);
+alert(distancia);

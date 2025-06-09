@@ -1,0 +1,35 @@
+1)
+Três amigos Patrick, Betito e Telecken foram ao cinema em dias diferentes: segunda, terça e quarta. Sabemos que:
+	Patrick não foi na segunda.
+	Betito foi um dia depois de Telecken.
+
+Em que dia cada um foi ao cinema?
+
+a) Telecken (segunda), Patrick (terça), Betito (quarta)
+b) Patrick (segunda), Betito (terça), Telecken (quarta)
+c) Betito (segunda), Telecken (terça), Patrick (quarta)
+d) Betito (segunda), Patrick (terça), Telecken (quarta)
+e) Telecken (segunda), Betito (terça), Patrick (quarta)
+
+
+2) 
+Observe a sequência numérica abaixo:
+
+4, -6, 9, -13,5, 20,25, ...
+
+Qual é o próximo número da sequência?
+
+a) -29,375
+b) 30
+c) -30,375
+d) -30,125
+e) 29,375
+
+3)
+Hoje é quinta-feira, 12 de junho. Qual dia da semana será daqui a 40 dias?
+
+a) segunda-feira.
+b) terça-feira.
+c) quarta-feira.
+d) quinta-feira.
+e) sexta-feira.

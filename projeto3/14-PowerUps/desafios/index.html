@@ -365,7 +365,7 @@ function loop()
     
     //***********************************************
 
-    if((Math.trunc(inimigos_animacao / 15) % 2) == 0)
+    if(inimigos_animacao < 15)
     {   inimigos_imagem = inimigos_imagem1;
     }
     else
@@ -373,6 +373,10 @@ function loop()
     }
     
     inimigos_animacao = inimigos_animacao + 1;
+
+    if(inimigos_animacao > 30)
+    {   inimigos_animacao = 0;
+    }
     
     context.drawImage(nave, canvas.width-75 , 25, 75, 75)
     context.fillStyle = "green";

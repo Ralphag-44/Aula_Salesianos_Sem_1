@@ -1,0 +1,22 @@
+a = parseInt(prompt("Qual o a?")); 
+b = parseInt(prompt("Qual o b?")); 
+c = parseInt(prompt("Qual o c?"));
+trocar = 0;
+if(a > b)
+{   trocar = a;
+    a = b;
+    b = trocar;
+}
+if(b > c)
+{   trocar = b;
+    b = c;
+    c = trocar;
+}
+if(a > b)
+{   trocar = a;
+    a = b;
+    b = trocar;
+}
+alert(a);
+alert(b);
+alert(c);

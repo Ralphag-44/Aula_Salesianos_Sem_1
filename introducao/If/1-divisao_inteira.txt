@@ -1,0 +1,9 @@
+dividendo = parseInt(prompt("qual o dividendo?"));
+divisor = parseInt(prompt("qual o divisor?"));
+divisao = dividendo / divisor;
+if(divisao == Math.trunc(divisao))
+{   alert("é divisão inteira!");
+}
+else
+{   alert("não é divisão inteira!");
+}

@@ -44,7 +44,7 @@
             context.fillRect(0, 0, canvas.width, canvas.height);
 
             inimigo_x = inimigo_x + inimigo_velocidade;
-            if(inimigo_x <= 0 || inimigo_x >= canvas.width - inimigo_largura)
+            if(inimigo_x <= 0 || inimigo_x >= (canvas.width - inimigo_largura))
             {   inimigo_velocidade = inimigo_velocidade * -1;
             }
                            //imagem,  x,       y,      largura,     altura

@@ -266,7 +266,7 @@ function loop()
 
     //*********************************************
     if (powerUp_ativo == false) {
-        powerUp_y = -powerUp_altura;
+        powerUp_y = 0-powerUp_altura;
         powerUps_quantidade = (powerUp1_quantidade + powerUp2_quantidade + powerUp3_quantidade);
         while (powerUp_ativo == false && (powerUps_quantidade > 0)) {
             powerUp_tipo = Math.trunc(Math.random()*3)+1;
@@ -323,7 +323,7 @@ function loop()
     
     //***********************************************
 
-    if((Math.trunc(inimigos_animacao / 15) % 2) == 0)
+    if(inimigos_animacao < 15)
     {   inimigos_imagem = inimigos_imagem1;
     }
     else
@@ -331,6 +331,10 @@ function loop()
     }
     
     inimigos_animacao = inimigos_animacao + 1;
+
+    if(inimigos_animacao > 30)
+    {   inimigos_animacao = 0;
+    }
     
     context.drawImage(nave, canvas.width-75 , 25, 75, 75)
     context.fillStyle = "green";
