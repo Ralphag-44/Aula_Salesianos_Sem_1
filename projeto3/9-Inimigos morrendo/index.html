@@ -80,6 +80,11 @@
                 {   inimigos_velocidade = inimigos_velocidade * -1;
                 }
                 context.drawImage(inimigos_imagem, inimigo1_x, inimigos_y, inimigos_largura, inimigos_altura);
+                context.fillStyle = "rgba(255, 0, 0, .6)";
+                context.beginPath();
+                context.arc(inimigo1_x + inimigos_largura/2, inimigos_y + inimigos_altura/2, inimigos_raio, 0, Math.PI*2)
+                context.closePath();
+                context.fill();
             }
             if(inimigo2_vivo == true)
             {   if(Math.hypot(nave_tiro_x - (inimigo2_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
