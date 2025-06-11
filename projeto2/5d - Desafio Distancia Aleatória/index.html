@@ -31,8 +31,8 @@
     atrito = 0.77
     atrito_tabela = 0.256
 
-    bola_x_acelaracao = 0
-    bola_y_acelaracao = 2
+    bola_x_aceleracao = 0
+    bola_y_aceleracao = 2
 
     alert("Sua proximidade com a Cesta de 1-10 é: ")
     alert(Math.trunc((distancia_da_rede/canvas.width)*11.25))
@@ -128,8 +128,8 @@
         bola_x = bola_x + bola_x_velocidade
         bola_y = bola_y + bola_y_velocidade
 
-        bola_x_velocidade = bola_x_velocidade + bola_x_acelaracao
-        bola_y_velocidade = bola_y_velocidade + bola_y_acelaracao   
+        bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao
+        bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao   
 
     //Colisao Chão e Teto
 
@@ -192,8 +192,8 @@
         bola_y_velocidade = bola_y_velocidade * -1
 
         
-        bola_x += bola_x_velocidade
-        bola_y += bola_y_velocidade
+        bola_x =  bola_x + bola_x_velocidade
+        bola_y =  bola_y + bola_y_velocidade
     }
 
 
