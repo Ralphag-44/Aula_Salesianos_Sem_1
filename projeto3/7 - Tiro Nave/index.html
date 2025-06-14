@@ -52,7 +52,7 @@
             }
         };
 
-        document.addEventListener("keypress", function(event) {
+        window.onkeypress = function (event) {
             if (event.key == "a") {
                 if(nave_x > 0)
                 {   nave_x = nave_x - 10;
@@ -63,13 +63,13 @@
                 {   nave_x = nave_x + 10;
                 };
             };
-            if(event.key == " ")
+            if(event.key == "e")
             {   if(nave_tiro_y <= 0)
                 {   nave_tiro_x = nave_x + nave_largura / 2;
                     nave_tiro_y = nave_y;
                 }
             }
-        });
+        };
 
         
     </script>

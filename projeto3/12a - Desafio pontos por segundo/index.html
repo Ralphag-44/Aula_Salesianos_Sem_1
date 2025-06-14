@@ -186,59 +186,41 @@ function loop()
         context.fill();
     }
     else
-    {   atirou = false;
-        while(atirou == false)
-        {   inimigo_atirar = Math.trunc(Math.random()*5);
-            if(inimigo_atirar == 0)
-            {   if(inimigo1_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
-                    atirou = true;
-                }
+    {   inimigo_atirou = false;
+        if(inimigo_atirou == false)
+        {   if(inimigo1_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
+                inimigo_atirou = true;
             }
-            else
-            {   atirou = false;
-                while(atirou == false)
-                {   inimigo_atirar = Math.trunc(Math.random()*5);
-                    if(inimigo_atirar == 0)
-                    {   if(inimigo1_vivo == true)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
-                            atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 1)
-                    {   if(inimigo2_vivo  == true)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
-                            atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 2)
-                    {   if(inimigo3_vivo  == true)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
-                            atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 3)
-                    {   if(inimigo4_vivo == true)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
-                            atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 4)
-                    {   if(inimigo5_vivo == true)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
-                            atirou = true;
-                        }
-                    }
-
-                }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo2_vivo  == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
+                inimigo_atirou = true;
             }
-
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo3_vivo  == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo4_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo5_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
         }
     }
     
@@ -256,8 +238,7 @@ function loop()
 };
 
 
-document.addEventListener("keypress", function(event)
-{   if (event.key == "a")
+window.onkeypress = function (event) {   if (event.key == "a")
     {   if(nave_x > 0)
         {   nave_x = nave_x - 10;
         };
@@ -267,13 +248,13 @@ document.addEventListener("keypress", function(event)
         {   nave_x = nave_x + 10;
         };
     };
-    if(event.key == " ")
+    if(event.key == "e")
     {   if(nave_tiro_y <= 0)
         {   nave_tiro_x = nave_x + nave_largura / 2;
             nave_tiro_y = nave_y;
         }
     }
-});
+};
 
 
 </script>

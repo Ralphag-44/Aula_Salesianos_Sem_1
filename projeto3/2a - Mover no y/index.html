@@ -24,7 +24,7 @@
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
         };
 
-        document.addEventListener("keypress", function (event) {
+        window.onkeypress = function (event) {
             if (event.key == "a") {
                 nave_x = nave_x - 10;
             };
@@ -39,7 +39,7 @@
                 nave_y = nave_y + 10;
             };
             //*****************************************************************************
-        });
+        };
     </script>
 </body>
 

@@ -37,7 +37,7 @@
             context.drawImage(inimigo, inimigo_x, inimigo_y, inimigo_largura, inimigo_altura);
         };
 
-        document.addEventListener("keypress", function(event) {
+        window.onkeypress = function (event) {
             if (event.key == "a") {
                 if(nave_x > 0)
                 {   nave_x = nave_x - 10;
@@ -48,7 +48,7 @@
                 {   nave_x = nave_x + 10;
                 };
             };
-        });
+        };
 
         
     </script>
