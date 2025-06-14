@@ -1,0 +1,4 @@
+x1 = Number(prompt("qual o x do primeiro ponto?"));
+x2 = Number(prompt("qual o x do segundo ponto?"));
+distancia = Math.abs(x2 - x1);
+alert(distancia);

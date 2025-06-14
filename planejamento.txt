@@ -7,8 +7,8 @@ mostar o console e "brincar de hacker"
 Mostrar tipagem 
 
 Variaveis prompt alert
-numero_inteiro = parseInt(prompt());
-numero_real = parseFloat(prompt());
+numero_inteiro = Number(prompt());
+numero_real = Number(prompt());
 texto = prompt();
 
 Expressões (+,-,*,/,%, ==, >, <, <=, >=, !=, &&, ||)

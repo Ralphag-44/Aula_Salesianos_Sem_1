@@ -1,6 +1,6 @@
-a = parseInt(prompt("Qual o a?")); 
-b = parseInt(prompt("Qual o b?")); 
-c = parseInt(prompt("Qual o c?"));
+a = Number(prompt("Qual o a?")); 
+b = Number(prompt("Qual o b?")); 
+c = Number(prompt("Qual o c?"));
 trocar = 0;
 if(a > b)
 {   trocar = a;
