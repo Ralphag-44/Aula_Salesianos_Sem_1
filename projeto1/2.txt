@@ -8,4 +8,4 @@ if(pergunta == "s")
 else
 {   fim = numero;
 }
-alert("O número está entre: "+inicio+"-"+fim);
+alert("O número está entre: "+inicio+" e "+fim);

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+        
+        FPS = 30;
+        timer = setInterval(loop, 1000/FPS);
+        
+        nave = new Image();
+        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave_x = 100;
+        nave_y = canvas.height-150;
+        nave_largura = 100;
+        nave_altura = 100;
+
+
+        inimigo = new Image();
+        inimigo.src = "imgs/enemy.png"; // caminho da imagem a partir desse mesmo arquivo
+        inimigo_x = 100;
+        inimigo_y = 150;
+        inimigo_largura = 100;
+        inimigo_altura = 100;
+
+
+
+        function loop()
+        {   context.fillStyle = "lightgray";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            //*****************************************************************************
+            inimigo_x = inimigo_x + 10;
+            //*****************************************************************************
+
+                           //imagem,  x,       y,      largura,     altura
+            context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
+            context.drawImage(inimigo, inimigo_x, inimigo_y, inimigo_largura, inimigo_altura);
+        };
+
+        document.addEventListener("keypress", function(event) {
+            if (event.key == "a") {
+                if(nave_x > 0)
+                {   nave_x = nave_x - 10;
+                };
+            };
+            if (event.key == "d") {
+                if(nave_x+nave_largura < canvas.width)
+                {   nave_x = nave_x + 10;
+                };
+            };
+        });
+
+        
+    </script>
+</body>
+</html>

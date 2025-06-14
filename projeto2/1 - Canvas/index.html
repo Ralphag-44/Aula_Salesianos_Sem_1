@@ -12,14 +12,12 @@
         </style>
     </head>
     <body>
-        <canvas id="canvas" ></canvas>
+        <canvas id="canvas" height="600" width="800"></canvas>
         <script>
             
     canvas = document.getElementById("canvas")
     context = canvas.getContext("2d")
         
-    canvas.width = innerWidth
-    canvas.height = innerHeight
     
     context.lineWidth = 5
     context.strokeStyle = "#000000"

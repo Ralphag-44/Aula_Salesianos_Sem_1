@@ -1,0 +1,8 @@
+a = Number(prompt("Qual o a?"));
+b = Number(prompt("Qual o b?"));
+c = Number(prompt("Qual o c?"));
+delta = Math.sqrt(Math.pow(b, 2)-(4*a*c));
+raiz1 = (-b+delta)/(2*a);
+raiz2 = (-b-delta)/(2*a);
+alert(raiz1);
+alert(raiz2);

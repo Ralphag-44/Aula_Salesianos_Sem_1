@@ -10,4 +10,4 @@ while(inicio != fim)
     {   fim = numero;
     }
 }
-alert("O número está entre: "+inicio+"-"+fim);
+alert("O número é: "+inicio);
