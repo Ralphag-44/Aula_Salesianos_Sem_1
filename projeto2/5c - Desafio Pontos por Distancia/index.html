@@ -56,8 +56,8 @@
     atrito = 0.77
     atrito_tabela = 0.256
 
-    bola_x_acelaracao = 0
-    bola_y_acelaracao = 2
+    bola_x_aceleracao = 0
+    bola_y_aceleracao = 2
 
     bola_y_velocidade =  Number(prompt("Valor da Força Y (Para Cima):"))
     bola_x_velocidade =  Number(prompt("Valor da Força X (Para Direita):"))
@@ -183,8 +183,8 @@
         bola_x = bola_x + bola_x_velocidade
         bola_y = bola_y + bola_y_velocidade
 
-        bola_x_velocidade = bola_x_velocidade + bola_x_acelaracao
-        bola_y_velocidade = bola_y_velocidade + bola_y_acelaracao   
+        bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao
+        bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao   
 
     //Colisao Chão e Teto
 
@@ -247,8 +247,8 @@
         bola_y_velocidade = bola_y_velocidade * -1
 
         
-        bola_x += bola_x_velocidade
-        bola_y += bola_y_velocidade
+        bola_x =  bola_x + bola_x_velocidade
+        bola_y =  bola_y + bola_y_velocidade
     }
 
 
