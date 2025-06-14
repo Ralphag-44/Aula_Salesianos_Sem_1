@@ -28,15 +28,15 @@
     bola_y = altura_arremesso*0.95
 
 
-    if(distancia_da_rede <= canvas.width*0.17)
+        if(distancia_da_rede <= canvas.width*0.17)
     {
         pontos_posicao = 5
     }
-        else if(distancia_da_rede > canvas.width*0.17 && distancia_da_rede  < canvas.width * 0.52)
+        if(distancia_da_rede > canvas.width*0.17 && distancia_da_rede  < canvas.width * 0.52)
     {
         pontos_posicao = 3
     }
-        else if(distancia_da_rede >= canvas.width*0.52)
+        if(distancia_da_rede >= canvas.width*0.52)
     {
         pontos_posicao = 2
     }
@@ -74,7 +74,7 @@
         {
             bola_y_velocidade = 5
         }
-        else if(bola_y_velocidade > 60)
+        if(bola_y_velocidade > 60)
         {
             bola_y_velocidade = 60
         }
@@ -83,7 +83,7 @@
         {
            bola_x_velocidade = 5
         }
-        else if(bola_x_velocidade > 60)
+        if(bola_x_velocidade > 60)
         {
             bola_x_velocidade = 60
         }
@@ -196,7 +196,7 @@
 
     }
     
-    else if(bola_y < bola_raio)
+    if(bola_y < bola_raio)
     {
         bola_y = bola_raio
         bola_y_velocidade = bola_y_velocidade * atrito
@@ -231,7 +231,7 @@
 
     }    
 
-    else if(bola_x <= bola_raio)
+    if(bola_x <= bola_raio)
     {
         bola_x = bola_raio
         bola_x_velocidade = bola_x_velocidade * atrito

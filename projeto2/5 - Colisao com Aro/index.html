@@ -54,7 +54,7 @@
     {
             bola_y_velocidade = 5
     }
-    else if(bola_y_velocidade > 60)
+    if(bola_y_velocidade > 60)
     {
             bola_y_velocidade = 60
     }
@@ -63,7 +63,7 @@
     {
            bola_x_velocidade = 5
     }
-    else if(bola_x_velocidade > 60)
+    if(bola_x_velocidade > 60)
     {
             bola_x_velocidade = 60
     }
@@ -153,7 +153,7 @@
 
     }
     
-    else if(bola_y < bola_raio)
+    if(bola_y < bola_raio)
     {
         bola_y = bola_raio
         bola_y_velocidade = bola_y_velocidade * atrito
@@ -188,7 +188,7 @@
 
     }    
 
-    else if(bola_x <= bola_raio)
+    if(bola_x <= bola_raio)
     {
         bola_x = bola_raio
         bola_x_velocidade = bola_x_velocidade * atrito
