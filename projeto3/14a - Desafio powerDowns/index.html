@@ -70,14 +70,6 @@ powerUp_y = 0;
 powerUp_largura = 75;
 powerUp_altura = 75;
 
-powerUp1_quantidade = 10; // vida
-powerUp2_quantidade = 3; //velocidade
-powerUp3_quantidade = 5; // bala grande
-
-powerUp4_quantidade = 4;
-powerUp5_quantidade = 3;
-powerUp6_quantidade = 2;
-
 powerUp_ativo = false;
 powerUp_tipo = 0;
 
@@ -170,13 +162,11 @@ function loop()
     {   alert("Parabéns! Você ganhou o jogo!");
         alert("Pontuação Final: "+pontos);
         clearInterval(timer);
-        window.location.reload();
     }
 
     if(nave_vida == 0)
     {   alert("Você perdeu o jogo!");
         clearInterval(timer);
-        window.location.reload();
     }
 
     context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
@@ -258,52 +248,45 @@ function loop()
     //*********************************************
     if (powerUp_ativo == false) {
         powerUp_y = -powerUp_altura;
-        powerUps_quantidade = (powerUp1_quantidade + powerUp2_quantidade + powerUp3_quantidade + powerUp4_quantidade + powerUp5_quantidade + powerUp6_quantidade);
-        while (powerUp_ativo == false && (powerUps_quantidade > 0)) {
+        if (powerUp_ativo == false) {
             powerUp_tipo = Math.trunc(Math.random()*6)+1; //****************************************** trocar 3 por 6
             
-            if (powerUp_tipo == 1 && powerUp1_quantidade > 0) {
+            if (powerUp_tipo == 1) {
                 powerUp.src = "imgs/life.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp1_quantidade = powerUp1_quantidade -1;
-            };
-            if (powerUp_tipo == 2 && powerUp2_quantidade > 0) {
+            }
+            if (powerUp_tipo == 2) {
                 powerUp.src = "imgs/speed.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp2_quantidade = powerUp2_quantidade -1;
-            };
-            if (powerUp_tipo == 3 && powerUp3_quantidade > 0) {
+            }
+            if (powerUp_tipo == 3) {
                 powerUp.src = "imgs/municao.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp3_quantidade = powerUp3_quantidade -1;
-            };
+            }
 
             //****************************
-            if (powerUp_tipo == 4 && powerUp4_quantidade > 0) {
+            if (powerUp_tipo == 4) {
                 powerUp.src = "imgs/veneno.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp3_quantidade = powerUp4_quantidade -1;
-            };
-            if (powerUp_tipo == 5 && powerUp5_quantidade > 0) {
+            }
+            if (powerUp_tipo == 5) {
                 powerUp.src = "imgs/speeddown.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp3_quantidade = powerUp5_quantidade -1;
-            };
-            if (powerUp_tipo == 6 && powerUp3_quantidade > 0) {
+            }
+            if (powerUp_tipo == 6) {
                 powerUp.src = "imgs/municaodown.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp3_quantidade = powerUp6_quantidade -1;
-            };
+            }
 
             //********************
         }
-    };
+    }
 
     if(powerUp_ativo)
     {   powerUp_y = powerUp_y + powerUp_velocidade;
@@ -373,26 +356,26 @@ function loop()
     context.fillStyle = "purple";
     context.fillText(pontos, 80, 75);
 
-};
+}
 
 
 window.onkeypress = function (event) {   if (event.key == "a")
     {   if(nave_x > 0)
         {   nave_x = nave_x - nave_velocidade;
-        };
-    };
+        }
+    }
     if (event.key == "d")
     {   if(nave_x+nave_largura < canvas.width)
         {   nave_x = nave_x + nave_velocidade;
-        };
-    };
+        }
+    }
     if(event.key == "e")
     {   if(nave_tiro_y <= 0)
         {   nave_tiro_x = nave_x + nave_largura / 2;
             nave_tiro_y = nave_y;
         }
     }
-};
+}
 
 
 </script>

@@ -70,10 +70,6 @@ powerUp_y = 0;
 powerUp_largura = 75;
 powerUp_altura = 75;
 
-powerUp1_quantidade = 10;
-powerUp2_quantidade = 3;
-powerUp3_quantidade = 5;
-
 powerUp_ativo = false;
 powerUp_tipo = 0;
 
@@ -165,7 +161,6 @@ function loop()
     {   alert("Parabéns! Você ganhou o jogo!");
         alert(pontos);
         clearInterval(timer);
-        window.location.reload();
     }
 
     if(nave_vida == 0)
@@ -235,30 +230,26 @@ function loop()
     //*********************************************
     if (powerUp_ativo == false) {
         powerUp_y = 0-powerUp_altura;
-        powerUps_quantidade = (powerUp1_quantidade + powerUp2_quantidade + powerUp3_quantidade);
-        while (powerUp_ativo == false && (powerUps_quantidade > 0)) {
+        if(powerUp_ativo == false) {
             powerUp_tipo = Math.trunc(Math.random()*3)+1;
             
-            if (powerUp_tipo == 1 && powerUp1_quantidade > 0) {
+            if (powerUp_tipo == 1) {
                 powerUp.src = "imgs/life.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp1_quantidade = powerUp1_quantidade -1;
-            };
-            if (powerUp_tipo == 2 && powerUp2_quantidade > 0) {
+            }
+            if (powerUp_tipo == 2) {
                 powerUp.src = "imgs/speed.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp2_quantidade = powerUp2_quantidade -1;
-            };
-            if (powerUp_tipo == 3 && powerUp3_quantidade > 0) {
+            }
+            if (powerUp_tipo == 3) {
                 powerUp.src = "imgs/municao.png";
                 powerUp_x = Math.random()*canvas.width;
                 powerUp_ativo = true;
-                powerUp3_quantidade = powerUp3_quantidade -1;
-            };
+            }
         }
-    };
+    }
 
     if(powerUp_ativo)
     {   powerUp_y = powerUp_y + powerUp_velocidade;
@@ -284,9 +275,9 @@ function loop()
                     nave_tiro_tamanho = nave_tiro_tamanho + 2;
                     nave_tiro_velocidade = nave_tiro_velocidade - 10;
                     powerUp_ativo = false;
-                };
-            };
-        };
+                }
+            }
+        }
     };
     
     //***********************************************
