@@ -1,61 +1,41 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jogo Arremesso</title>
-        <style>
-            *{
-                margin: 0;
-                overflow: hidden;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="canvas" ></canvas>
-        <script>
-            
-    canvas = document.getElementById("canvas")
-    context = canvas.getContext("2d")
-        
-    canvas.width = innerWidth
-    canvas.height = innerHeight
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
 
-    bola_y = canvas.height/2
-    bola_x = canvas.width/2
+        bola_y = canvas.height / 2;
+        bola_x = canvas.width / 2;
 
-    bola_x_velocidade = 0
-    bola_y_velocidade = 8
+        bola_x_velocidade = 0;
+        bola_y_velocidade = 8;
 
-    bola_raio = 22
-    
-    bola_cor = "rgb(238,103,48)"
+        bola_raio = 22;
 
-        FPS = 30
-        timer = setInterval(loop, 1000/FPS)
+        bola_cor = "coral";
 
-        function loop(){
-            
-        context.fillStyle = "rgb(255, 255, 255)"
-        context.fillRect(0, 0, canvas.width, canvas.height)
+        FPS = 30;
+        timer = setInterval(loop, 1000 / FPS);
 
-            //Desenho Bola
+        function loop() {
+            context.fillStyle = "bisque";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Desenho Bola
             context.fillStyle = bola_cor;
             context.beginPath();
             context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
             context.fill();
-                
 
-        bola_x = bola_x + bola_x_velocidade
-        bola_y = bola_y + bola_y_velocidade
+            bola_x = bola_x + bola_x_velocidade;
+            bola_y = bola_y + bola_y_velocidade;
 
-        if(bola_y+bola_raio >= canvas.height)
-        {
-            bola_y_velocidade = 0
+            if (bola_y + bola_raio >= canvas.height) {
+                bola_y_velocidade = 0;
+            }
         }
-
-    }
-
-        </script>
-    </body>
-    </html>
+    </script>
+</body>
+</html>

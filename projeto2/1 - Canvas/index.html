@@ -1,58 +1,38 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jogo Arremesso</title>
-        <style>
-            *{
-                margin: 0;
-                overflow: hidden;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="canvas" ></canvas>
-        <script>
-            
-    canvas = document.getElementById("canvas")
-    context = canvas.getContext("2d")
-        
-    canvas.width = innerWidth
-    canvas.height = innerHeight
-    
-    context.lineWidth = 5
-    context.strokeStyle = "#000000"
-    context.strokeRect(canvas.width/2 - canvas.height/1.5/2 , canvas.height/4, canvas.height/1.5, canvas.height/1.5)
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
 
-    context.fillStyle = "#000000";
-    context.beginPath();
-    context.arc(canvas.width/2, canvas.height/2, 200, 0, 2 * Math.PI);
-    context.fill();
+        context.lineWidth = 5;
+        context.strokeStyle = "black";
+        context.strokeRect(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4, canvas.height / 1.5, canvas.height / 1.5);
 
-    context.fillStyle = "#FF0000";
-    context.font = "bold 40px Arial";
-    context.textAlign = "center";   
-    context.fillText("Canvas", canvas.width/2, canvas.height/5);
-    context.lineWidth = 5;
-    context.strokeStyle = "#000000";
+        context.fillStyle = "black";
+        context.beginPath();
+        context.arc(canvas.width / 2, canvas.height / 2, 80, 0, 2 * Math.PI);
+        context.fill();
 
+        context.fillStyle = "blue";
+        context.font = "bold 40px Arial";
+        context.textAlign = "center";
+        context.fillText("Canvas", canvas.width / 2, canvas.height / 5);
+        context.lineWidth = 5;
+        context.strokeStyle = "black";
 
-    context.strokeRect(canvas.width/2 - canvas.height/1.5/2, canvas.height/4, canvas.height/1.5, canvas.height/1.5);
+        context.strokeRect(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4, canvas.height / 1.5, canvas.height / 1.5);
 
-    context.beginPath();
+        context.beginPath();
 
-    context.moveTo(canvas.width/2 - canvas.height/1.5/2, canvas.height/4 + (canvas.height/1.5)/2);
-    context.lineTo(canvas.width/2 - canvas.height/1.5/2 + canvas.height/1.5, canvas.height/4 + canvas.height/1.5);
+        context.moveTo(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4 + (canvas.height / 1.5) / 2);
+        context.lineTo(canvas.width / 2 - canvas.height / 1.5 / 2 + canvas.height / 1.5, canvas.height / 4 + canvas.height / 1.5);
 
-    context.moveTo(canvas.width/2 - canvas.height/1.5/2 + canvas.height/1.5, canvas.height/4 + (canvas.height/1.5)/2);
-    context.lineTo(canvas.width/2 - canvas.height/1.5/2, canvas.height/4 + canvas.height/1.5);
+        context.moveTo(canvas.width / 2 - canvas.height / 1.5 / 2 + canvas.height / 1.5, canvas.height / 4 + (canvas.height / 1.5) / 2);
+        context.lineTo(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4 + canvas.height / 1.5);
 
-    context.stroke();
-
-
-    
-
-        </script>
-    </body>
-    </html>
+        context.stroke();
+    </script>
+</body>
+</html>

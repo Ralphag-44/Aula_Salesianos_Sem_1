@@ -1,218 +1,157 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jogo Arremesso</title>
-        <style>
-            *{
-                margin: 0;
-                overflow: hidden;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="canvas" ></canvas>
-        <script>
-            
-    canvas = document.getElementById("canvas")
-    context = canvas.getContext("2d")
-        
-    canvas.width = innerWidth
-    canvas.height = innerHeight
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
 
-    distancia_da_rede = prompt("Defina, de 1 a 10, a proximidade da qual o arremesso será realizado: (10 sendo o mais próximo, e 1 mais distante)")
+        distancia_da_rede = Number(prompt("Defina a proximidade da qual o arremesso será realizado: (Min:100|Max:1180)"));
 
-    if(distancia_da_rede < 1)
-    {
-        distancia_da_rede = 1
-    }
+        if (distancia_da_rede < 100) {
+            distancia_da_rede = 100;
+        }
 
-    if(distancia_da_rede > 10)
-    {
-        distancia_da_rede = 10
-    }
+        if (distancia_da_rede > 1180) {
+            distancia_da_rede = 1180;
+        }
 
+        altura_arremesso = 490;
+        chao = 608;
+        bola_x = distancia_da_rede;
+        bola_y = 466;
 
-    distancia_da_rede = (canvas.width*0.9/10) * distancia_da_rede
+        atrito = 0.77;
 
-    altura_arremesso = canvas.height*0.68
+        bola_x_aceleracao = 0;
+        bola_y_aceleracao = 2;
 
-    bola_x = distancia_da_rede
-    bola_y = altura_arremesso*0.95
+        bola_y_velocidade = Number(prompt("Valor da Força Y (Negativo):"));
+        bola_x_velocidade = Number(prompt("Valor da Força X (Positivo):"));
 
-    atrito = 0.77
-    atrito_tabela = 0.256
+        bola_cor = "coral";
 
-    bola_x_aceleracao = 0
-    bola_y_aceleracao = 2
+        if (bola_y_velocidade > -5) {
+            bola_y_velocidade = -5;
+        }
+        if (bola_y_velocidade < -60) {
+            bola_y_velocidade = -60;
+        }
 
-    bola_y_velocidade =  Number(prompt("Valor da Força Y (Para Cima):"))
-    bola_x_velocidade =  Number(prompt("Valor da Força X (Para Direita):"))
+        if (bola_x_velocidade < 5) {
+            bola_x_velocidade = 5;
+        }
+        if (bola_x_velocidade > 60) {
+            bola_x_velocidade = 60;
+        }
 
-    if(bola_y_velocidade < 5)
-    {
-            bola_y_velocidade = 5
-    }
-    if(bola_y_velocidade > 60)
-    {
-            bola_y_velocidade = 60
-    }
+        bola_raio = 22;
 
-    if(bola_x_velocidade < 5)
-    {
-           bola_x_velocidade = 5
-    }
-    if(bola_x_velocidade > 60)
-    {
-            bola_x_velocidade = 60
-    }
-    
-    bola_y_velocidade = bola_y_velocidade * -1 
+        hitbox = true;
 
-    bola_raio = 22
-    
-    bola_cor = "rgb(238,103,48)"
+        pontos = 0;
 
-    hitbox = false
+        FPS = 30;
+        timer = setInterval(loop, 1000 / FPS);
 
-    pontos = 0
+        function loop() {
+            context.fillStyle = "bisque";
+            context.fillRect(0, 0,canvas.width,canvas.height);
 
-        FPS = 30
-        timer = setInterval(loop, 1000/FPS)
+            context.fillStyle = "DarkBlue";
+            context.fillRect(0, 612,canvas.width, 108);
 
-        function loop(){
-
-        context.fillStyle = "rgb(255, 255, 255)"
-        context.fillRect(0, 0, canvas.width, canvas.height)
-
-        context.fillStyle = "DarkBlue"
-        context.fillRect(0, canvas.height*0.85, canvas.width, canvas.height*0.15)
-
-        context.fillStyle = "brown"
-        context.fillRect(distancia_da_rede-bola_raio, canvas.height*0.7, 35, canvas.height*0.15)
-
+            context.fillStyle = "brown";
+            context.fillRect(distancia_da_rede - bola_raio, 504, 35, 108);
 
             //Desenho Bola
             context.fillStyle = bola_cor;
             context.beginPath();
             context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
             context.fill();
-                
-       // Aro
+
+            // Aro
             context.fillStyle = "black";
-            context.fillRect(canvas.width * 0.95125, canvas.height * 0.25, canvas.width * 0.05, canvas.height * 0.00625);
+            context.fillRect(1218, 180, 64, 5);
 
             context.beginPath();
             context.strokeStyle = "gray";
-            context.lineWidth = canvas.width * 0.0052;
+            context.lineWidth = 7;
 
-            context.moveTo(canvas.width * 0.95525, canvas.height * 0.256);
-            context.lineTo(canvas.width * 0.95525, canvas.height * 0.296);
+            context.moveTo(1223, 184);
+            context.lineTo(1223, 213);
 
-            context.moveTo(canvas.width * 0.96825, canvas.height * 0.256);
-            context.lineTo(canvas.width * 0.96825, canvas.height * 0.296);
+            context.moveTo(1239, 184);
+            context.lineTo(1239, 213);
 
-            context.moveTo(canvas.width * 0.98125, canvas.height * 0.256);
-            context.lineTo(canvas.width * 0.98125, canvas.height * 0.296);
+            context.moveTo(1256, 184);
+            context.lineTo(1256, 213);
 
-            context.moveTo(canvas.width * 0.99425, canvas.height * 0.256);
-            context.lineTo(canvas.width * 0.99425, canvas.height * 0.296);
+            context.moveTo(1273, 184);
+            context.lineTo(1273, 213);
 
-            context.stroke()    
+            context.stroke();
+
+            if (hitbox == true) {
+                context.fillStyle = "blue";
+                context.beginPath();
+                context.arc(1221, 181, 3, 0, 2 * Math.PI);
+                context.fill();
+
+                context.fillStyle = "red";
+                context.beginPath();
+                context.arc(1250, 180, 6, 0, 2 * Math.PI);
+                context.fill();
+            }
+
+            bola_x = bola_x + bola_x_velocidade;
+            bola_y = bola_y + bola_y_velocidade;
+
+            bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao;
+            bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao;
+
+            // Colisao Chão e Teto
+            if (bola_y >= chao - bola_raio) {
+                bola_y = chao - bola_raio + 5;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
+            }
+
+            if (bola_y < bola_raio) {
+                bola_y = bola_raio;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
+            }
+
+            // Colisao Paredes
+            if (bola_x >=canvas.width - bola_raio) {
+                bola_x =canvas.width - bola_raio;
+                bola_x_velocidade = bola_x_velocidade * atrito;
+                bola_x_velocidade = bola_x_velocidade * -1;
+            }
+
+            if (bola_x <= bola_raio) {
+                bola_x = bola_raio;
+                bola_x_velocidade = bola_x_velocidade * atrito;
+                bola_x_velocidade = bola_x_velocidade * -1;
+            }
+
+            if (Math.hypot(bola_x - 1221, bola_y - 181) <= bola_raio + 3) {
+
+                bola_x_velocidade = bola_x_velocidade * atrito;
+                bola_x_velocidade = bola_x_velocidade * -1;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
 
 
-            if(hitbox == true)
-        {
-            context.fillStyle = "blue";
-            context.beginPath();
-            context.arc(canvas.width * 0.95425, canvas.height * 0.252, canvas.width*0.0025, 0, 2 * Math.PI);
-            context.fill();
+                bola_x = bola_x + bola_x_velocidade;
+                bola_y = bola_y + bola_y_velocidade;
+            }
 
-            context.fillStyle = "red";
-            context.beginPath();
-            context.arc(canvas.width * 0.97625, canvas.height * 0.25, canvas.width*0.005, 0, 2 * Math.PI);
-            context.fill();
+            if (Math.hypot(1250 - bola_x, 180 - bola_y) <= bola_raio + 6) {
+                bola_cor = "Gold";
+            }
         }
-
-
-        bola_x = bola_x + bola_x_velocidade
-        bola_y = bola_y + bola_y_velocidade
-
-        bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao
-        bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao   
-
-    //Colisao Chão e Teto
-
-    if(bola_y >= canvas.height*0.845 - bola_raio)
-    {    
-        
-        bola_y = canvas.height*0.845 - bola_raio +5
-        bola_y_velocidade = bola_y_velocidade * atrito
-        bola_y_velocidade = bola_y_velocidade * -1
-
-    }
-    
-    if(bola_y < bola_raio)
-    {
-        bola_y = bola_raio
-        bola_y_velocidade = bola_y_velocidade * atrito
-        bola_y_velocidade = bola_y_velocidade * -1
-    }
-
-
-        //Colisao Paredes
-
-    if(bola_x >= canvas.width - bola_raio)
-    {
-       
-
-    bola_x = canvas.width - bola_raio
-
-    //Tabela
-    if (bola_y+bola_raio >= canvas.height * 0.15 && bola_y-bola_raio <= canvas.height * 0.30){
-     
-        bola_y_velocidade = bola_y_velocidade * atrito
-        bola_y_velocidade = Math.abs(bola_y_velocidade)
-
-        bola_x_velocidade = bola_x_velocidade * -1
-        bola_x_velocidade = bola_x_velocidade * atrito_tabela
-    }
-
-    else 
-    {
-        bola_x_velocidade = bola_x_velocidade * atrito
-        bola_x_velocidade = bola_x_velocidade * -1
-    }   
-
-
-    }    
-
-    if(bola_x <= bola_raio)
-    {
-        bola_x = bola_raio
-        bola_x_velocidade = bola_x_velocidade * atrito
-        bola_x_velocidade = bola_x_velocidade * -1
-    }
-    
-    if (Math.hypot(bola_x - (canvas.width * 0.95425), bola_y - canvas.height * 0.252) <= bola_raio + (canvas.width * 0.0025)) {
-        
-        bola_x_velocidade = bola_x_velocidade * atrito
-        bola_x_velocidade = bola_x_velocidade * -1
-        bola_y_velocidade = bola_y_velocidade * atrito
-        bola_y_velocidade = bola_y_velocidade * -1
-
-        
-        bola_x =  bola_x + bola_x_velocidade 
-        bola_y =  bola_y + bola_y_velocidade
-    }
-
-
-    if (Math.hypot(canvas.width * 0.97625 - bola_x, canvas.height * 0.25 - bola_y) <= bola_raio + (canvas.width * 0.005)) {
-        bola_cor = "Gold"
-    }
-    }
-
-        </script>
-    </body>
-    </html>
+    </script>
+</body>
+</html>

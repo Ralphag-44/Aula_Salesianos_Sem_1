@@ -1,96 +1,67 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jogo Arremesso</title>
-        <style>
-            *{
-                margin: 0;
-                overflow: hidden;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="canvas" ></canvas>
-        <script>
-            
-    canvas = document.getElementById("canvas")
-    context = canvas.getContext("2d")
-        
-    canvas.width = innerWidth
-    canvas.height = innerHeight
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
 
-    distancia_da_rede = 5
+        distancia_da_rede = 576;
 
-    distancia_da_rede = (canvas.width*0.9/10) * distancia_da_rede
+        altura_arremesso = 490;
+        chao = 608;
+        bola_x = distancia_da_rede;
+        bola_y = 466;
 
-    altura_arremesso = canvas.height*0.68
+        bola_y_aceleracao = 2;
+        bola_x_aceleracao = 2;
 
-    bola_x = distancia_da_rede
-    bola_y = altura_arremesso*0.95
+        bola_y_velocidade = Number(prompt("Valor da Força Y (Negativo):"));
+        bola_x_velocidade = Number(prompt("Valor da Força X (Positivo):"));
 
-    bola_y_aceleracao = 2
-    bola_x_aceleracao = 5
+        if (bola_y_velocidade > -5) {
+            bola_y_velocidade = -5;
+        }
+        if (bola_y_velocidade < -60) {
+            bola_y_velocidade = -60;
+        }
 
-    bola_y_velocidade =  Number(prompt("Valor da Força Y (Para Cima):"))
-    bola_x_velocidade =  Number(prompt("Valor da Força X (Para Direita):"))
+        if (bola_x_velocidade < 5) {
+            bola_x_velocidade = 5;
+        }
+        if (bola_x_velocidade > 60) {
+            bola_x_velocidade = 60;
+        }
 
-    if(bola_y_velocidade < 5)
-    {
-            bola_y_velocidade = 5
-    }
-    if(bola_y_velocidade > 60)
-    {
-            bola_y_velocidade = 60
-    }
+        bola_raio = 22;
 
-    if(bola_x_velocidade < 5)
-    {
-           bola_x_velocidade = 5
-    }
-    if(bola_x_velocidade > 60)
-    {
-            bola_x_velocidade = 60
-    }
-    
-    bola_y_velocidade = bola_y_velocidade * -1 
+        bola_cor = "coral";
 
-    bola_raio = 22
-    
-    bola_cor = "rgb(238,103,48)"
+        FPS = 30;
+        timer = setInterval(loop, 1000 / FPS);
 
-        FPS = 30
-        timer = setInterval(loop, 1000/FPS)
+        function loop() {
+            context.fillStyle = "bisque";
+            context.fillRect(0, 0,canvas.width,canvas.height);
 
-        function loop(){
+            context.fillStyle = "DarkBlue";
+            context.fillRect(0, 612,canvas.width, 108);
 
-        context.fillStyle = "rgb(255, 255, 255)"
-        context.fillRect(0, 0, canvas.width, canvas.height)
+            context.fillStyle = "brown";
+            context.fillRect(554, 504, 35, 108);
 
-        context.fillStyle = "DarkBlue"
-        context.fillRect(0, canvas.height*0.85, canvas.width, canvas.height*0.15)
-
-        context.fillStyle = "brown"
-        context.fillRect(distancia_da_rede-bola_raio, canvas.height*0.7, 35, canvas.height*0.15)
-
-
-            //Desenho Bola
+            // Desenho Bola
             context.fillStyle = bola_cor;
             context.beginPath();
             context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
             context.fill();
-                
 
-        bola_x = bola_x + bola_x_velocidade
-        bola_y = bola_y + bola_y_velocidade
+            bola_x = bola_x + bola_x_velocidade;
+            bola_y = bola_y + bola_y_velocidade;
 
-        bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao   
-        bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao   
-
-    
-    }
-
-        </script>
-    </body>
-    </html>
+            bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao;
+            bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao;
+        }
+    </script>
+</body>
+</html>
