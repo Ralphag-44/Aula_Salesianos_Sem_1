@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+
+        distancia_da_rede = Math.trunc(Math.random() * 1080 + 100);
+        altura_arremesso = 490;
+        chao = 608;
+        bola_x = distancia_da_rede;
+        bola_y = 465;
+
+        if (distancia_da_rede <= 218) {
+            pontos_posicao = 5;
+        }
+        if (distancia_da_rede > 218 && distancia_da_rede < 666) {
+            pontos_posicao = 3;
+        }
+        if (distancia_da_rede >= 666) {
+            pontos_posicao = 2;
+        }
+
+        atrito = 0.77;
+        atrito_tabela = 0.256;
+
+        bola_x_aceleracao = 0;
+        bola_y_aceleracao = 2;
+
+        alert("Sua proximidade com a Cesta é: ");
+        alert(distancia_da_rede)
+        bola_y_velocidade = Number(prompt("Valor da Força Y (Negativo):"));
+        bola_x_velocidade = Number(prompt("Valor da Força X (Positivo):"));
+
+        if (bola_y_velocidade > -5) {
+            bola_y_velocidade = -5;
+        }
+        if (bola_y_velocidade < -60) {
+            bola_y_velocidade = -60;
+        }
+
+        if (bola_x_velocidade < 5) {
+            bola_x_velocidade = 5;
+        }
+        if (bola_x_velocidade > 60) {
+            bola_x_velocidade = 60;
+        }
+
+        bola_raio = 22;
+        hitbox = false;
+        pontos = 0;
+        start = false;
+
+        FPS = 30;
+        timer = setInterval(loop, 1000 / FPS);
+
+        function loop() {
+            context.fillStyle = "Bisque";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.fillStyle = "DarkBlue";
+            context.fillRect(0, 612, canvas.width, 108);
+
+            context.fillStyle = "brown";
+            context.fillRect(distancia_da_rede - bola_raio, 504, 35, 108);
+
+            context.font = "bold 45px 'Verdana'";
+            context.fillStyle = "black";
+            context.textAlign = "center";
+            context.textBaseline = "top";
+            context.fillText("Pontos: " + pontos, 128, 20);
+
+            // Marcas da Quadra
+            context.strokeStyle = "white";
+            context.lineWidth = 5;
+            context.font = "bold 30px 'Arial Black'";
+            context.fillStyle = "white";
+
+            context.beginPath();
+
+            // 5 Pontos
+            context.moveTo(218, 612);
+            context.lineTo(218, canvas.height);
+            context.fillText("5 PTS", 164, 642);
+
+            // 3 Pontos
+            context.moveTo(666, 612);
+            context.lineTo(666, canvas.height);
+            context.fillText("3 PTS", 612, 642);
+
+            // 2 Pontos
+            context.moveTo(1152, 612);
+            context.lineTo(1152, canvas.height);
+            context.fillText("2 PTS", 1099, 642);
+
+            context.stroke();
+
+            // Desenho Bola
+            context.fillStyle = "coral";
+            context.beginPath();
+            context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
+            context.fill();
+
+            // Aro
+            context.fillStyle = "black";
+            context.fillRect(1218, 180, 64, 5);
+
+            context.beginPath();
+            context.strokeStyle = "gray";
+            context.lineWidth = 7;
+
+            context.moveTo(1223, 184);
+            context.lineTo(1223, 213);
+
+            context.moveTo(1239, 184);
+            context.lineTo(1239, 213);
+
+            context.moveTo(1256, 184);
+            context.lineTo(1256, 213);
+
+            context.moveTo(1273, 184);
+            context.lineTo(1273, 213);
+
+            context.stroke();
+
+            if (hitbox == true) {
+                context.fillStyle = "blue";
+                context.beginPath();
+                context.arc(1221, 181, 3, 0, 2 * Math.PI);
+                context.fill();
+
+                context.fillStyle = "red";
+                context.beginPath();
+                context.arc(1250, 180, 6, 0, 2 * Math.PI);
+                context.fill();
+            }
+
+            bola_x = bola_x + bola_x_velocidade;
+            bola_y = bola_y + bola_y_velocidade;
+
+            bola_x_velocidade = bola_x_velocidade + bola_x_aceleracao;
+            bola_y_velocidade = bola_y_velocidade + bola_y_aceleracao;
+
+            // Colisao Chão e Teto
+            if (bola_y >= chao - bola_raio) {
+                bola_y = chao - bola_raio + 5;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
+            }
+
+            if (bola_y < bola_raio) {
+                bola_y = bola_raio;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
+            }
+
+            // Colisao Paredes
+            if (bola_x >= canvas.width - bola_raio) {
+                bola_x = canvas.width - bola_raio;
+
+                // Tabela
+                if (bola_y + bola_raio >= 108 && bola_y - bola_raio <= 216) {
+                    bola_y_velocidade = bola_y_velocidade * atrito;
+                    bola_y_velocidade = Math.abs(bola_y_velocidade);
+
+                    bola_x_velocidade = bola_x_velocidade * -1;
+                    bola_x_velocidade = bola_x_velocidade * atrito_tabela;
+                } else {
+                    bola_x_velocidade = bola_x_velocidade * atrito;
+                    bola_x_velocidade = bola_x_velocidade * -1;
+                }
+            }
+
+            if (bola_x <= bola_raio) {
+                bola_x = bola_raio;
+                bola_x_velocidade = bola_x_velocidade * atrito;
+                bola_x_velocidade = bola_x_velocidade * -1;
+            }
+
+            if (Math.hypot(bola_x - 1221, bola_y - 181) <= bola_raio + 3) {
+                bola_x_velocidade = bola_x_velocidade * atrito;
+                bola_x_velocidade = bola_x_velocidade * -1;
+                bola_y_velocidade = bola_y_velocidade * atrito;
+                bola_y_velocidade = bola_y_velocidade * -1;
+
+                bola_x = bola_x + bola_x_velocidade;
+                bola_y = bola_y + bola_y_velocidade;
+            }
+
+            if (Math.hypot(1250 - bola_x, 180 - bola_y) <= bola_raio + 6) {
+                pontos = pontos_posicao;
+            }
+        }
+    </script>
+</body>
+</html>
