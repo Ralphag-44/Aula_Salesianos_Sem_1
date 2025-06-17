@@ -7,8 +7,8 @@ mostar o console e "brincar de hacker"
 Mostrar tipagem 
 
 Variaveis prompt alert
-numero_inteiro = parseInt(prompt());
-numero_real = parseFloat(prompt());
+numero_inteiro = Number(prompt());
+numero_real = Number(prompt());
 texto = prompt();
 
 Expressões (+,-,*,/,%, ==, >, <, <=, >=, !=, &&, ||)
@@ -84,7 +84,7 @@ if(nave_x > 0) {...} else {if(nave_x < canvas.width)}
 	desafios: ajeitar x+width, colisão y
 
 4ª: desenhar inimigo na tela
-	desafios: fazer inimigo se movendo
+	desafios: fazer inimigo se movendo, desenhar inimigo maior, desenhar inimigo menor
 
 5ª: inimigo andando na tela
 inimigo1_x = inimigo1_x + inimigo1_velocidade_x
@@ -124,6 +124,7 @@ ficar alterando imagens
 vida++, velocidade_nave ++, velocidade_tiro ++
 	desafios: fazer powerDown
 
+jogo final: com som
 
 
 

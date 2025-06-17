@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+
+        nave = new Image();
+        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+
+        nave_x = 100;
+        nave_y = canvas.height - 150;
+        nave_largura = 100;
+        nave_altura = 100;
+
+        FPS = 30;
+        timer = setInterval(loop, 1000 / FPS);
+
+        function loop() {
+            context.fillStyle = "lightgray";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            //imagem,  x,       y,      largura,     altura
+            context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
+        };
+
+        document.addEventListener("keypress", function (event) {
+             if (event.key == "a") {
+                if(nave_x > 0)
+                {   nave_x = nave_x - 10;
+                }
+            };
+            if (event.key == "d") {
+                if(nave_x < canvas.width-nave_largura)
+                {   nave_x = nave_x + 10;
+                }
+            };
+            //*****************************************************************************
+            if (event.key == "w") {
+                if(nave_y > 0)
+                {   nave_y = nave_y - 10;
+                }
+            };
+            if (event.key == "s") {
+                if(nave_y < canvas.height - nave_altura)
+                {    nave_y = nave_y + 10;
+                }
+            };
+            //*****************************************************************************
+        };
+    </script>
+</body>
+
+</html>

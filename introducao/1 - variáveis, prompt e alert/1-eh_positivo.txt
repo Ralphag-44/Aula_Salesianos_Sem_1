@@ -1,0 +1,3 @@
+numero = Number(prompt("Qual o número?"));
+eh_positivo = numero > 0;
+alert(eh_positivo);

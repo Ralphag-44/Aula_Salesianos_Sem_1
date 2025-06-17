@@ -1,0 +1,9 @@
+numero = Number(prompt("Qual o número?"));
+inicio = Number(prompt("Qual o início do intervalo?"));
+fim = Number(prompt("Qual o fim do intervalo?"));
+maior_inicio = (numero >= inicio);
+menor_fim = (numero <= fim);
+no_intervalo = maior_inicio && menor_fim;
+alert(em_intervalo);
+
+//perguntar qual é maior -3 ou -4

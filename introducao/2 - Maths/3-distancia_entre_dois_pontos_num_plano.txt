@@ -1,0 +1,8 @@
+x1 = Number(prompt("Qual o x1?"));
+y1 = Number(prompt("Qual o y1?"));
+x2 = Number(prompt("Qual o x2?"));
+y2 = Number(prompt("Qual o y2?"));
+largura = x1-x2;
+altura = y1-y2;
+distancia = Math.hypot(largura, altura);
+alert(distancia);

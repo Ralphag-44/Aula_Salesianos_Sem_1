@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+        
+        FPS = 30;
+        timer = setInterval(loop, 1000/FPS);
+        
+        nave = new Image();
+        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave_x = 100;
+        nave_y = canvas.height-150;
+        nave_largura = 100;
+        nave_altura = 100;
+        nave_raio = 50;
+
+
+        inimigos_imagem = new Image();
+        inimigos_imagem.src = "imgs/enemy.png";
+        inimigos_largura = 100;
+        inimigos_altura = 100;
+        inimigos_raio = 50;
+        inimigos_velocidade = 10;
+        
+
+        inimigos_y = 150;
+        
+        inimigo1_x = 100;
+        inimigo2_x = 200;
+        inimigo3_x = 300;
+        inimigo4_x = 400;
+        inimigo5_x = 500;
+        
+        inimigo1_vivo = true;
+        inimigo2_vivo = true;
+        inimigo3_vivo = true;
+        inimigo4_vivo = true;
+        inimigo5_vivo = true;
+        inimigos_vivos = 5;
+
+        nave_tiro_x = 0;
+        nave_tiro_y = 0;
+        nave_tiro_cor = "cyan";
+        nave_tiro_velocidade = -20;
+        nave_tiro_tamanho = 7;
+
+        function loop()
+        {   context.fillStyle = "lightgray";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            inimigo1_x = inimigo1_x + inimigos_velocidade;
+            inimigo2_x = inimigo2_x + inimigos_velocidade;
+            inimigo3_x = inimigo3_x + inimigos_velocidade;
+            inimigo4_x = inimigo4_x + inimigos_velocidade;
+            inimigo5_x = inimigo5_x + inimigos_velocidade;
+
+            if(inimigo1_vivo == true)
+            {   if(Math.hypot(nave_tiro_x - (inimigo1_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
+                    inimigo1_vivo = false;
+                    nave_tiro_y = 0;
+                    inimigos_vivos = inimigos_vivos - 1;
+                }
+                if((inimigo1_x <= 0) || (inimigo1_x >= canvas.width - inimigos_largura))
+                {   inimigos_velocidade = inimigos_velocidade * -1;
+                }
+                context.drawImage(inimigos_imagem, inimigo1_x, inimigos_y, inimigos_largura, inimigos_altura);
+                context.fillStyle = "rgba(255, 0, 0, .6)";
+                context.beginPath();
+                context.arc(inimigo1_x + inimigos_largura/2, inimigos_y + inimigos_altura/2, inimigos_raio, 0, Math.PI*2)
+                context.closePath();
+                context.fill();
+            }
+            if(inimigo2_vivo == true)
+            {   if(Math.hypot(nave_tiro_x - (inimigo2_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
+                    inimigo2_vivo = false;
+                    nave_tiro_y = 0;
+                    inimigos_vivos = inimigos_vivos - 1;
+                }
+                if((inimigo2_x <= 0) || (inimigo2_x >= canvas.width - inimigos_largura))
+                {   inimigos_velocidade = inimigos_velocidade * -1;
+                }
+                context.drawImage(inimigos_imagem, inimigo2_x, inimigos_y, inimigos_largura, inimigos_altura);
+            }
+            if(inimigo3_vivo == true)
+            {   if(Math.hypot(nave_tiro_x - (inimigo3_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
+                    inimigo3_vivo = false;
+                    nave_tiro_y = 0;
+                    inimigos_vivos = inimigos_vivos - 1;
+
+                }
+                if((inimigo3_x <= 0) || (inimigo3_x >= canvas.width - inimigos_largura))
+                {   inimigos_velocidade = inimigos_velocidade * -1;
+                }
+                context.drawImage(inimigos_imagem, inimigo3_x, inimigos_y, inimigos_largura, inimigos_altura);
+            }
+            if(inimigo4_vivo == true)
+            {   if(Math.hypot(nave_tiro_x - (inimigo4_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
+                    inimigo4_vivo = false;
+                    nave_tiro_y = 0;
+                    inimigos_vivos = inimigos_vivos - 1;
+                }
+                if((inimigo4_x <= 0) || (inimigo4_x >= canvas.width - inimigos_largura))
+                {   inimigos_velocidade = inimigos_velocidade * -1;
+                }
+                context.drawImage(inimigos_imagem, inimigo4_x, inimigos_y, inimigos_largura, inimigos_altura);
+            }
+            if(inimigo5_vivo == true)
+            {   if(Math.hypot(nave_tiro_x - (inimigo5_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho)){
+                    inimigo5_vivo = false;
+                    nave_tiro_y = 0;
+                    inimigos_vivos = inimigos_vivos - 1;
+                }
+                if((inimigo5_x <= 0) || (inimigo5_x >= canvas.width - inimigos_largura))
+                {   inimigos_velocidade = inimigos_velocidade * -1;
+                }
+                context.drawImage(inimigos_imagem, inimigo5_x, inimigos_y, inimigos_largura, inimigos_altura);
+            }
+
+            if (inimigos_vivos == 0) {
+                alert("Parabéns!! Você ganhou o jogo!");
+                clearInterval(timer);            
+            }
+
+
+            context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
+            if (nave_tiro_y > 0) {
+                nave_tiro_y = nave_tiro_y + nave_tiro_velocidade;
+                context.fillStyle = nave_tiro_cor;
+                context.beginPath();
+                context.arc(nave_tiro_x, nave_tiro_y, nave_tiro_tamanho, 0, Math.PI*2);
+                context.closePath();
+                context.fill();
+            }
+        };
+        
+
+        window.onkeypress = function (event) {
+            if (event.key == "a") {
+                if(nave_x > 0)
+                {   nave_x = nave_x - 10;
+                };
+            };
+            if (event.key == "d") {
+                if(nave_x+nave_largura < canvas.width)
+                {   nave_x = nave_x + 10;
+                };
+            };
+            if(event.key == "e")
+            {   if(nave_tiro_y <= 0)
+                {   nave_tiro_x = nave_x + nave_largura / 2;
+                    nave_tiro_y = nave_y;
+                }
+            }
+        };
+
+        
+    </script>
+</body>
+</html>

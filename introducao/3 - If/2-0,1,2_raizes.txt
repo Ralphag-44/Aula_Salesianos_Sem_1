@@ -1,0 +1,15 @@
+a = Number(prompt("Qual o a?"));
+b = Number(prompt("Qual o b?"));
+c = Number(prompt("Qual o c?"));
+delta = Math.sqrt(Math.pow(b, 2)-(4*a*c));
+if(delta > 0)
+{   alert("tem 2 raízes!");
+}
+else
+{   if(delta == 0)
+    {   alert("tem 1 raiz!");
+    }
+    else
+    {   alert("tem 0 raízes!");
+    }
+}
