@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -7,7 +6,7 @@
         context = canvas.getContext("2d");
 
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
 
         nave_x = 100;
         nave_y = 100;
@@ -20,7 +19,7 @@
         function loop()
         {   context.fillStyle = "lightgray";
             context.fillRect(0, 0, canvas.width, canvas.height);
-                           //imagem,  x,       y,      largura,     altura
+                           
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
         };
 

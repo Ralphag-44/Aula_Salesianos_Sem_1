@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@
 timer = setInterval(loop, 1000/FPS);
 
 nave = new Image();
-nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+nave.src = "imgs/nave.png"; 
 nave_x = 100;
 nave_y = canvas.height-150;
 nave_largura = 100;
@@ -41,6 +40,7 @@ inimigo4_vivo = true;
 inimigo5_vivo = true;
 inimigos_vivos = 5;
 
+//variáveis do tiro dos inimigos
 inimigos_tiro_x = 0;
 inimigos_tiro_y = canvas.height;
 inimigos_tiro_cor = "red";
@@ -123,7 +123,7 @@ function loop()
     if (inimigos_vivos == 0)
     {   alert("Parabéns!! Você ganhou o jogo!");
         clearInterval(timer);
-        window.location.reload()
+        
     }
 
 
@@ -138,7 +138,8 @@ function loop()
     }
 
     if(inimigos_tiro_y < canvas.height)
-    {   inimigos_tiro_y = inimigos_tiro_y + inimigos_tiro_velocidade;
+    {   //atualizando o tiro do inimigo
+        inimigos_tiro_y = inimigos_tiro_y + inimigos_tiro_velocidade;
         context.fillStyle = inimigos_tiro_cor;
         context.beginPath();
         context.arc(inimigos_tiro_x, inimigos_tiro_y, inimigos_tiro_tamanho, 0, Math.PI*2);
@@ -146,7 +147,8 @@ function loop()
         context.fill();
     }
     else
-    {   inimigo_atirou = false;
+    {   //vendo qual inimigo vai atirar
+        inimigo_atirou = false;
         if(inimigo_atirou == false)
         {   if(inimigo1_vivo == true)
             {   inimigos_tiro_y = inimigos_y + inimigos_altura;

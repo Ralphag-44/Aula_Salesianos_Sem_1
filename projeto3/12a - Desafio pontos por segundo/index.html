@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
            <head>
            <meta charset="UTF-8">
                          <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +23,7 @@ FPS = 30;
 timer = setInterval(loop, 1000/FPS);
 
 nave = new Image();
-nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+nave.src = "imgs/nave.png"; 
 nave_x = 100;
 nave_y = canvas.height-150;
 nave_largura = 100;
@@ -68,6 +67,7 @@ nave_tiro_velocidade = -20;
 nave_tiro_tamanho = 7;
 nave_vida = 3;
 
+//criando os pontos
 pontos = 0;
 
 function loop()
@@ -83,6 +83,7 @@ function loop()
     if(inimigo1_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo1_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo1_vivo = false;
+            //dando pontos quando mata o inimigo
             pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
@@ -95,6 +96,7 @@ function loop()
     if(inimigo2_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo2_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo2_vivo = false;
+            //dando pontos quando mata o inimigo
             pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
@@ -107,6 +109,7 @@ function loop()
     if(inimigo3_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo3_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo3_vivo = false;
+            //dando pontos quando mata o inimigo
             pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
@@ -120,6 +123,7 @@ function loop()
     if(inimigo4_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo4_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo4_vivo = false;
+            //dando pontos quando mata o inimigo
             pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
@@ -132,6 +136,7 @@ function loop()
     if(inimigo5_vivo == true)
     {   if(Math.hypot(nave_tiro_x - (inimigo5_x+inimigos_largura/2), nave_tiro_y - (inimigos_y+inimigos_altura/2)) < (inimigos_raio + nave_tiro_tamanho))
         {   inimigo5_vivo = false;
+            //dando pontos quando mata o inimigo
             pontos = pontos + 50;
             nave_tiro_y = 0;
             inimigos_vivos = inimigos_vivos - 1;
@@ -156,13 +161,13 @@ function loop()
     {   alert("Parabéns!! Você ganhou o jogo!");
         alert(Math.trunc(pontos));
         clearInterval(timer);
-        window.location.reload();
+        ;
     }
 
     if(nave_vida == 0)
     {   alert("Você perdeu o jogo!!");
         clearInterval(timer);
-        window.location.reload();
+        ;
     }
 
 
@@ -233,6 +238,7 @@ function loop()
     context.fillStyle = "purple";
     context.fillText(Math.trunc(pontos), 80, 75)
 
+    //dando 1 ponto por segundo 
     pontos = pontos + 1/FPS;
 
 };

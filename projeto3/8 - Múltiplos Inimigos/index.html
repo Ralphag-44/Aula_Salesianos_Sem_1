@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,13 +9,14 @@
         timer = setInterval(loop, 1000/FPS);
         
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
         nave_x = 100;
         nave_y = canvas.height-150;
         nave_largura = 100;
         nave_altura = 100;
 
 
+        //unindo as variáveis comuns dos inimigos em uma só
         inimigos_imagem = new Image();
         inimigos_imagem.src = "imgs/enemy.png";
         inimigos_largura = 100;
@@ -24,6 +24,7 @@
         inimigos_velocidade = 10;
         inimigos_y = 150;
 
+        //variáveis diferentes
         inimigo1_x = 100;
         inimigo2_x = 200;
         inimigo3_x = 300;
@@ -65,7 +66,7 @@
 
 
 
-            //imagem,  x,       y,      largura,     altura
+            
             context.drawImage(inimigos_imagem, inimigo1_x, inimigos_y, inimigos_largura, inimigos_altura);
             context.drawImage(inimigos_imagem, inimigo2_x, inimigos_y, inimigos_largura, inimigos_altura);
             context.drawImage(inimigos_imagem, inimigo3_x, inimigos_y, inimigos_largura, inimigos_altura);

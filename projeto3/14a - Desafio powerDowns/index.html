@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@ FPS = 30;
 timer = setInterval(loop, 1000/FPS);
 
 nave = new Image();
-nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+nave.src = "imgs/nave.png"; 
 nave_x = 100;
 nave_y = canvas.height-150;
 nave_largura = 100;
@@ -160,7 +159,7 @@ function loop()
 
     if (inimigos_vivos == 0)
     {   alert("Parabéns! Você ganhou o jogo!");
-        alert("Pontuação Final: "+pontos);
+        alert(pontos);
         clearInterval(timer);
     }
 
@@ -189,59 +188,41 @@ function loop()
         context.fill();
     }
     else
-    {   inimigo_inimigo_atirou = false;
-        while(inimigo_inimigo_atirou == false)
-        {   inimigo_atirar = Math.trunc(Math.random()*5);
-            if(inimigo_atirar == 0)
-            {   if(inimigo1_vivo)
-                {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                    inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
-                    inimigo_inimigo_atirou = true;
-                }
+    {   inimigo_atirou = false;
+        if(inimigo_atirou == false)
+        {   if(inimigo1_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
+                inimigo_atirou = true;
             }
-            else
-            {   inimigo_inimigo_atirou = false;
-                while(inimigo_inimigo_atirou == false)
-                {   inimigo_atirar = Math.trunc(Math.random()*5);
-                    if(inimigo_atirar == 0)
-                    {   if(inimigo1_vivo)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo1_x + inimigos_largura/2;
-                            inimigo_inimigo_atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 1)
-                    {   if(inimigo2_vivo)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
-                            inimigo_inimigo_atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 2)
-                    {   if(inimigo3_vivo)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
-                            inimigo_inimigo_atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 3)
-                    {   if(inimigo4_vivo)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
-                            inimigo_inimigo_atirou = true;
-                        }
-                    }
-                    if(inimigo_atirar == 4)
-                    {   if(inimigo5_vivo)
-                        {   inimigos_tiro_y = inimigos_y + inimigos_altura;
-                            inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
-                            inimigo_inimigo_atirou = true;
-                        }
-                    }
-
-                }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo2_vivo  == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo2_x + inimigos_largura/2;
+                inimigo_atirou = true;
             }
-
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo3_vivo  == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo3_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo4_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo4_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
+        }
+        if(inimigo_atirou == false)
+        {   if(inimigo5_vivo == true)
+            {   inimigos_tiro_y = inimigos_y + inimigos_altura;
+                inimigos_tiro_x = inimigo5_x + inimigos_largura/2;
+                inimigo_atirou = true;
+            }
         }
     }
 

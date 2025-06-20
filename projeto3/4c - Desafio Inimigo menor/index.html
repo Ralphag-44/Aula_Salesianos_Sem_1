@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@
         timer = setInterval(loop, 1000/FPS);
         
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
         nave_x = 100;
         nave_y = canvas.height-150;
         nave_largura = 100;
@@ -18,9 +17,10 @@
 
 
         inimigo = new Image();
-        inimigo.src = "imgs/enemy.png"; // caminho da imagem a partir desse mesmo arquivo
+        inimigo.src = "imgs/enemy.png"; 
         inimigo_x = 100;
         inimigo_y = 150;
+        //diminuindo tamanho do inimigo
         inimigo_largura = 50;
         inimigo_altura = 50;
 
@@ -29,7 +29,7 @@
         function loop()
         {   context.fillStyle = "lightgray";
             context.fillRect(0, 0, canvas.width, canvas.height);
-                           //imagem,  x,       y,      largura,     altura
+                           
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
             context.drawImage(inimigo, inimigo_x, inimigo_y, inimigo_largura, inimigo_altura);
         };

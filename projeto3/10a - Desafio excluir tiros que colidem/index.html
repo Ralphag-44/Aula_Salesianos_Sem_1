@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@
         timer = setInterval(loop, 1000/FPS);
         
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
         nave_x = 100;
         nave_y = canvas.height-150;
         nave_largura = 100;
@@ -121,14 +120,14 @@
             }
 
             if(Math.hypot((inimigos_tiro_x - nave_tiro_x), (inimigos_tiro_y - nave_tiro_y)) < (inimigos_tiro_tamanho + nave_tiro_tamanho))
-            {   nave_tiro_y = 0;
+            {   //resetando os tiros quando colidem
+                nave_tiro_y = 0;
                 inimigos_tiro_y = canvas.height;
             }
 
             if (inimigos_vivos == 0) {
                 alert("Parabéns!! Você ganhou o jogo!");
                 clearInterval(timer);
-                window.location.reload()
             }
 
 

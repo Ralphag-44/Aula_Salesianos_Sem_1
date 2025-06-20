@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@ FPS = 30;
 timer = setInterval(loop, 1000/FPS);
 
 nave = new Image();
-nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+nave.src = "imgs/nave.png"; 
 nave_x = 100;
 nave_y = canvas.height-150;
 nave_largura = 100;
@@ -166,7 +165,7 @@ function loop()
     if(nave_vida == 0)
     {   alert("Você perdeu o jogo!!");
         clearInterval(timer);
-        window.location.reload();
+        ;
     }
 
     context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
@@ -229,8 +228,10 @@ function loop()
 
     //*********************************************
     if (powerUp_ativo == false) {
+        //resetando o posição do powerUp
         powerUp_y = 0-powerUp_altura;
         if(powerUp_ativo == false) {
+            //escolhendo um powerUp aleatório
             powerUp_tipo = Math.trunc(Math.random()*3)+1;
             
             if (powerUp_tipo == 1) {

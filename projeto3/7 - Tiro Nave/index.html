@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@
         timer = setInterval(loop, 1000/FPS);
         
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
         nave_x = 100;
         nave_y = canvas.height-150;
         nave_largura = 100;
@@ -18,13 +17,14 @@
 
 
         inimigo = new Image();
-        inimigo.src = "imgs/enemy.png"; // caminho da imagem a partir desse mesmo arquivo
+        inimigo.src = "imgs/enemy.png"; 
         inimigo_x = 100;
         inimigo_y = 150;
         inimigo_largura = 100;
         inimigo_altura = 100;
         inimigo_velocidade = 10;
-
+    
+        //variáveis do tiro da nave
         nave_tiro_x = 0;
         nave_tiro_y = 0;
         nave_tiro_cor = "cyan";
@@ -38,7 +38,7 @@
             if(inimigo_x <= 0 || inimigo_x >= canvas.width - inimigo_largura)
             {   inimigo_velocidade = inimigo_velocidade * -1;
             }
-                           //imagem,  x,       y,      largura,     altura
+                           
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
             context.drawImage(inimigo, inimigo_x, inimigo_y, inimigo_largura, inimigo_altura);
 

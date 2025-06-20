@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -7,7 +6,7 @@
         context = canvas.getContext("2d");
 
         nave = new Image();
-        nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+        nave.src = "imgs/nave.png"; 
 
         nave_x = 100;
         nave_y = canvas.height-150;
@@ -20,18 +19,20 @@
         function loop()
         {   context.fillStyle = "lightgray";
             context.fillRect(0, 0, canvas.width, canvas.height);
-                           //imagem,  x,       y,      largura,     altura
+                           
             context.drawImage(nave, nave_x, nave_y, nave_largura, nave_altura);
         };
 
         window.onkeypress = function (event) {
             if (event.key == "a") {
+                //garantindo que a nave não saia para esquerda da tela
                 if(nave_x > 0)
                 {   nave_x = nave_x - 10;
                     console.log(nave_x);
                 }
             };
             if (event.key == "d") {
+                //garantindo que a nave não saia para direita da tela
                 if(nave_x < canvas.width)
                 {   nave_x = nave_x + 10;
                     console.log(nave_x);

@@ -133,7 +133,7 @@ colocar comentários em bloco de código exemplo:
 
 	// criação da nave com suas características
 	nave = new Image();
-	nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+	nave.src = "imgs/nave.png"; 
 	nave_x = 100;
 	nave_y = canvas.height-150;
 	nave_largura = 100;

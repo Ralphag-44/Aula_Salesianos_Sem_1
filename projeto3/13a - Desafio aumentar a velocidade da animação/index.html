@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="pt-br">
 <body>
     <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
@@ -10,7 +9,7 @@ FPS = 30;
 timer = setInterval(loop, 1000/FPS);
 
 nave = new Image();
-nave.src = "imgs/nave.png"; // caminho da imagem a partir desse mesmo arquivo
+nave.src = "imgs/nave.png"; 
 nave_x = 100;
 nave_y = canvas.height-150;
 nave_largura = 100;
@@ -144,13 +143,13 @@ function loop()
     {   alert("Parabéns!! Você ganhou o jogo!");
         alert(pontos);
         clearInterval(timer);
-        window.location.reload();
+        ;
     }
 
     if(nave_vida == 0)
     {   alert("Você perdeu o jogo!!");
         clearInterval(timer);
-        window.location.reload();
+        ;
     }
 
 
