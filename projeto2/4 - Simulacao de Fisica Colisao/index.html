@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <body>
-    <canvas id="canvas" width="1280" height="720"></canvas>
+    <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
         canvas = document.getElementById("canvas");
         context = canvas.getContext("2d");
 
-        distancia_da_rede = 575;
+        distancia_da_rede = 460;
 
-        altura_arremesso = 490;
-        chao = 608;
+        altura_arremesso = 523;
+        chao = 649;
 
         bola_x = distancia_da_rede;
-        bola_y = 466;
+        bola_y = 497;
 
         bola_x_aceleracao = 0;
         bola_y_aceleracao = 2;
@@ -33,7 +33,7 @@
             bola_x_velocidade = 60;
         }
 
-        bola_raio = 22;
+        bola_raio = 18;
 
         bola_cor = "coral";
 
@@ -45,10 +45,10 @@
             context.fillRect(0, 0,canvas.width,canvas.height);
 
             context.fillStyle = "DarkBlue";
-            context.fillRect(0, 612,canvas.width, 108);
+            context.fillRect(0, 653,canvas.width, 115);
 
             context.fillStyle = "brown";
-            context.fillRect(distancia_da_rede - bola_raio, 504, 35, 108);
+            context.fillRect(distancia_da_rede - bola_raio, 538, 28, 115);
 
             // Desenho Bola
             context.fillStyle = bola_cor;

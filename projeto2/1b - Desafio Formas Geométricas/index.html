@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <body>
-    <canvas id="canvas" width="1280" height="720"></canvas>
+    <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
         canvas = document.getElementById("canvas");
         context = canvas.getContext("2d");
 
         context.beginPath();
-        context.lineWidth = 5;
-        context.moveTo(1088, 180);
-        context.lineTo(1184, 360);
-        context.lineTo(992, 360);
-        context.lineTo(1088, 180);
+        context.lineWidth = 4;
+        context.moveTo(870, 192);
+        context.lineTo(947, 384);
+        context.lineTo(794, 384);
+        context.lineTo(870, 192);
         context.stroke();
 
-        context.lineWidth = 5;
+        context.lineWidth = 4;
         context.strokeStyle = "black";
         context.strokeRect(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4, canvas.height / 1.5, canvas.height / 1.5);
 
         context.fillStyle = "black";
         context.beginPath();
-        context.arc(canvas.width / 2, canvas.height / 2, 80, 0, 2 * Math.PI);
+        context.arc(canvas.width / 2, canvas.height / 2, 64, 0, 2 * Math.PI);
         context.fill();
 
         context.fillStyle = "blue";
-        context.font = "bold 40px Arial";
+        context.font = "bold 32px Arial";
         context.textAlign = "center";
         context.fillText("Canvas", canvas.width / 2, canvas.height / 5);
-        context.lineWidth = 5;
+        context.lineWidth = 4;
         context.strokeStyle = "black";
 
         context.strokeRect(canvas.width / 2 - canvas.height / 1.5 / 2, canvas.height / 4, canvas.height / 1.5, canvas.height / 1.5);

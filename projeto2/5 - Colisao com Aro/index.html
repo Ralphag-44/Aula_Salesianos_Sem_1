@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <body>
-    <canvas id="canvas" width="1280" height="720"></canvas>
+    <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
         canvas = document.getElementById("canvas");
         context = canvas.getContext("2d");
 
-        distancia_da_rede = Number(prompt("Defina a proximidade da qual o arremesso será realizado: (Min:100|Max:1180)"));
+        distancia_da_rede = Number(prompt("Defina a proximidade da qual o arremesso será realizado: (Min:80|Max:944)"));
 
-        if (distancia_da_rede < 100) {
-            distancia_da_rede = 100;
+        if (distancia_da_rede < 80) {
+            distancia_da_rede = 80;
         }
 
-        if (distancia_da_rede > 1180) {
-            distancia_da_rede = 1180;
+        if (distancia_da_rede > 944) {
+            distancia_da_rede = 944;
         }
 
-        altura_arremesso = 490;
-        chao = 608;
+        altura_arremesso = 523;
+        chao = 649;
         bola_x = distancia_da_rede;
-        bola_y = 466;
+        bola_y = 497;
 
         atrito = 0.77;
 
@@ -44,7 +44,7 @@
             bola_x_velocidade = 60;
         }
 
-        bola_raio = 22;
+        bola_raio = 18;
 
         hitbox = true;
 
@@ -58,10 +58,10 @@
             context.fillRect(0, 0,canvas.width,canvas.height);
 
             context.fillStyle = "DarkBlue";
-            context.fillRect(0, 612,canvas.width, 108);
+            context.fillRect(0, 653,canvas.width, 115);
 
             context.fillStyle = "brown";
-            context.fillRect(distancia_da_rede - bola_raio, 504, 35, 108);
+            context.fillRect(distancia_da_rede - bola_raio, 538, 28, 115);
 
             //Desenho Bola
             context.fillStyle = bola_cor;
@@ -69,37 +69,40 @@
             context.arc(bola_x, bola_y, bola_raio, 0, 2 * Math.PI);
             context.fill();
 
-            // Aro
+            // Aro  
             context.fillStyle = "black";
-            context.fillRect(1218, 180, 64, 5);
+            context.fillRect(974, 192, 77, 5);   
 
             context.beginPath();
             context.strokeStyle = "gray";
-            context.lineWidth = 7;
+            context.lineWidth = 8;   
 
-            context.moveTo(1223, 184);
-            context.lineTo(1223, 213);
+             context.moveTo(979, 196);
+            context.lineTo(979, 227);
 
-            context.moveTo(1239, 184);
-            context.lineTo(1239, 213);
+            context.moveTo(995, 196);
+            context.lineTo(995, 227);
 
-            context.moveTo(1256, 184);
-            context.lineTo(1256, 213);
+            context.moveTo(1012, 196);
+            context.lineTo(1012, 227);
 
-            context.moveTo(1273, 184);
-            context.lineTo(1273, 213);
+            context.moveTo(1029, 196);
+            context.lineTo(1029, 227);
+
+            context.moveTo(1046, 196);   
+            context.lineTo(1046, 227);
 
             context.stroke();
 
             if (hitbox == true) {
                 context.fillStyle = "blue";
                 context.beginPath();
-                context.arc(1221, 181, 3, 0, 2 * Math.PI);
+                context.arc(977, 193, 4, 0, 2 * Math.PI);   
                 context.fill();
 
                 context.fillStyle = "red";
                 context.beginPath();
-                context.arc(1250, 187, 6, 0, 2 * Math.PI);
+                context.arc(1000, 199, 7, 0, 2 * Math.PI);   
                 context.fill();
             }
 
@@ -135,19 +138,17 @@
                 bola_x_velocidade = bola_x_velocidade * -1;
             }
 
-            if (Math.hypot(bola_x - 1221, bola_y - 181) <= bola_raio + 3) {
-
+            if (Math.hypot(bola_x - 977, bola_y - 193) <= bola_raio + 4) {
                 bola_x_velocidade = bola_x_velocidade * atrito;
                 bola_x_velocidade = bola_x_velocidade * -1;
                 bola_y_velocidade = bola_y_velocidade * atrito;
                 bola_y_velocidade = bola_y_velocidade * -1;
 
-
                 bola_x = bola_x + bola_x_velocidade;
                 bola_y = bola_y + bola_y_velocidade;
             }
 
-            if (Math.hypot(1250 - bola_x, 187 - bola_y) <= bola_raio + 6) {
+            if (Math.hypot(1000 - bola_x, 199 - bola_y) <= bola_raio + 7) {
                 bola_cor = "Gold";
             }
         }

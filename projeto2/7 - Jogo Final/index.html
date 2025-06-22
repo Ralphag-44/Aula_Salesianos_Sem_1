@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <body>
-    <canvas id="canvas" width="1280" height="720"></canvas>
+    <canvas id="canvas" width="1024" height="768"></canvas>
     <script>
         canvas = document.getElementById("canvas");
         context = canvas.getContext("2d");
 
-        distancia_da_rede = Math.trunc(Math.random() * 1080 + 100);
-        altura_arremesso = 490;
-        chao = 608;
+        distancia_da_rede = Math.trunc(Math.random() * 864 + 80);
+        altura_arremesso = 523;
+        chao = 649;
         bola_x = distancia_da_rede;
-        bola_y = 465;
+        bola_y = 496;
 
-        if (distancia_da_rede <= 218) {
+        if (distancia_da_rede <= 174) {
             pontos_posicao = 5;
         }
-        if (distancia_da_rede > 218 && distancia_da_rede < 666) {
+        if (distancia_da_rede > 174 && distancia_da_rede < 533) {
             pontos_posicao = 3;
         }
-        if (distancia_da_rede >= 666) {
+        if (distancia_da_rede >= 533) {
             pontos_posicao = 2;
         }
 
@@ -46,7 +46,7 @@
             bola_x_velocidade = 60;
         }
 
-        bola_raio = 22;
+        bola_raio = 18;
         hitbox = false;
         pontos = 0;
         start = false;
@@ -59,39 +59,39 @@
             context.fillRect(0, 0, canvas.width, canvas.height);
 
             context.fillStyle = "DarkBlue";
-            context.fillRect(0, 612, canvas.width, 108);
+            context.fillRect(0, 653, canvas.width, 115);
 
             context.fillStyle = "brown";
-            context.fillRect(distancia_da_rede - bola_raio, 504, 35, 108);
+            context.fillRect(distancia_da_rede - bola_raio, 538, 28, 115);
 
-            context.font = "bold 45px 'Verdana'";
+            context.font = "bold 36px 'Verdana'";
             context.fillStyle = "black";
             context.textAlign = "center";
             context.textBaseline = "top";
-            context.fillText("Pontos: " + pontos, 128, 20);
+            context.fillText("Pontos: " + pontos, 102, 21);
 
             // Marcas da Quadra
             context.strokeStyle = "white";
-            context.lineWidth = 5;
-            context.font = "bold 30px 'Arial Black'";
+            context.lineWidth = 4;
+            context.font = "bold 24px 'Arial Black'";
             context.fillStyle = "white";
 
             context.beginPath();
 
             // 5 Pontos
-            context.moveTo(218, 612);
-            context.lineTo(218, canvas.height);
-            context.fillText("5 PTS", 164, 642);
+            context.moveTo(174, 653);
+            context.lineTo(174, canvas.height);
+            context.fillText("5 PTS", 131, 683);
 
             // 3 Pontos
-            context.moveTo(666, 612);
-            context.lineTo(666, canvas.height);
-            context.fillText("3 PTS", 612, 642);
+            context.moveTo(533, 653);
+            context.lineTo(533, canvas.height);
+            context.fillText("3 PTS", 490, 683);
 
             // 2 Pontos
-            context.moveTo(1152, 612);
-            context.lineTo(1152, canvas.height);
-            context.fillText("2 PTS", 1099, 642);
+            context.moveTo(922, 653);
+            context.lineTo(922, canvas.height);
+            context.fillText("2 PTS", 879, 683);
 
             context.stroke();
 
@@ -103,35 +103,35 @@
 
             // Aro
             context.fillStyle = "black";
-            context.fillRect(1218, 180, 64, 5);
+            context.fillRect(974, 192, 51, 4);
 
             context.beginPath();
             context.strokeStyle = "gray";
-            context.lineWidth = 7;
+            context.lineWidth = 6;
 
-            context.moveTo(1223, 184);
-            context.lineTo(1223, 213);
+            context.moveTo(979, 196);
+            context.lineTo(979, 227);
 
-            context.moveTo(1239, 184);
-            context.lineTo(1239, 213);
+            context.moveTo(991, 196);
+            context.lineTo(991, 227);
 
-            context.moveTo(1256, 184);
-            context.lineTo(1256, 213);
+            context.moveTo(1004, 196);
+            context.lineTo(1004, 227);
 
-            context.moveTo(1273, 184);
-            context.lineTo(1273, 213);
+            context.moveTo(1017, 196);
+            context.lineTo(1017, 227);
 
             context.stroke();
 
             if (hitbox == true) {
                 context.fillStyle = "blue";
                 context.beginPath();
-                context.arc(1221, 181, 3, 0, 2 * Math.PI);
+                context.arc(977, 193, 2, 0, 2 * Math.PI);
                 context.fill();
 
                 context.fillStyle = "red";
                 context.beginPath();
-                context.arc(1250, 180, 6, 0, 2 * Math.PI);
+                context.arc(1000, 192, 5, 0, 2 * Math.PI);
                 context.fill();
             }
 
@@ -159,7 +159,7 @@
                 bola_x = canvas.width - bola_raio;
 
                 // Tabela
-                if (bola_y + bola_raio >= 108 && bola_y - bola_raio <= 216) {
+                if (bola_y + bola_raio >= 115 && bola_y - bola_raio <= 230) {
                     bola_y_velocidade = bola_y_velocidade * atrito;
                     bola_y_velocidade = Math.abs(bola_y_velocidade);
 
@@ -177,7 +177,7 @@
                 bola_x_velocidade = bola_x_velocidade * -1;
             }
 
-            if (Math.hypot(bola_x - 1221, bola_y - 181) <= bola_raio + 3) {
+            if (Math.hypot(bola_x - 977, bola_y - 193) <= bola_raio + 2) {
                 bola_x_velocidade = bola_x_velocidade * atrito;
                 bola_x_velocidade = bola_x_velocidade * -1;
                 bola_y_velocidade = bola_y_velocidade * atrito;
@@ -187,7 +187,7 @@
                 bola_y = bola_y + bola_y_velocidade;
             }
 
-            if (Math.hypot(1250 - bola_x, 180 - bola_y) <= bola_raio + 6) {
+            if (Math.hypot(1000 - bola_x, 192 - bola_y) <= bola_raio + 5) {
                 pontos = pontos_posicao;
             }
         }
