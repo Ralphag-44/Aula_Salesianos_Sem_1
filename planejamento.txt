@@ -1,42 +1,42 @@
-		Advinhar número:
+Apresentacao Geral(Mostrar Jogos e perguntar o nome dos lazarentos) - Bruno Comeca, mas todos participam
 
-Fazer o bagulho de advinhar falado
+Fazer o bagulho de advinhar falado - Rafael
 
-mostar o console e "brincar de hacker"
+mostar o console e "brincar de hacker", js, linguagem programacao - Gabriel
 
-Mostrar tipagem 
+Mostrar Tipagem/Variavel - Gabriel 
 
 Variaveis prompt alert
 numero_inteiro = Number(prompt());
 numero_real = Number(prompt());
 texto = prompt();
 
-Expressões (+,-,*,/,%, ==, >, <, <=, >=, !=, &&, ||)
+Expressões (+,-,*,/,%, ==, >, <, <=, >=, !=, &&, ||) - Bruno 
 
 se um número é positivo ou negativo
 se um número é par ou impar
 se um número está dentro de um intervalo
 
-Maths
+Maths - Rafael
 abs, ceil, floor, trunc, sqrt, pow, random, 
 
 mostrar as raizes de uma equação de segundo grau (importante por causa da parentisação)
 (x-2)*(x-5)=x^2 -5x -2x +10 = x^2 -7x + 10 = 0
 distância entre dois pontos
 
-If 
+If - Condicionais - Gabriel
 se uma divisão é inteira ou tem resto
 mostrar se uma equação de segundo grau tem 0, 1 ou 2 raizes reais
 ordenar o conteúdo de 3 variáveis a,b,c
 
-repetição (so while, inicialização, teste e atualização)
+repetição (so while, inicialização, teste e atualização) - Bruno
 loop infinito, i = 0; while i < 10; alert(i);
 
 
-1ª: escolher número aleatório
-2ª: o jogo com so o primeiro if
-3ª: fazer o jogo so com ifs
-4ª: jogo final
+1ª: escolher número aleatório   -	
+2ª: o jogo com so o primeiro if -
+3ª: fazer o jogo so com ifs     -
+4ª: jogo final                  -
 
 		
 		
